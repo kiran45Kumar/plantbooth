@@ -1,0 +1,2148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Plant Booth/index-1.html  22 Nov 2019 09:55:06 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PlantBooth | Your Green Haven for Indoor & Outdoor Plant Decor</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Plant Booth - Bootstrap eCommerce Template">
+    <meta name="author" content="p-themes">
+    <!-- Favicon -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/logo.jpg' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/logo.jpg' %}">
+    <link rel="manifest" href="{% static 'assets/images/icons/site.html' %}">
+    <link rel="mask-icon" href="" color="#666666">
+   
+    <meta name="apple-mobile-web-app-title" content="PlantBooth">
+    <meta name="application-name" content="PlantBooth">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="msapplication-config" content="{% static 'assets/images/icons/browserconfig.xml' %}">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="{% static 'assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/owl-carousel/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/magnific-popup/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/plugins/jquery.countdown.css' %}">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/skins/skin-demo-2.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/demos/demo-2.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+    .logo img{
+    height: 80px;
+    width: 100%;
+    object-fit: contain;
+}
+.flex-user{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.flex-user p{
+    cursor: pointer;
+}
+.flex-user p:hover{
+    color: #555;
+}
+.product-image1{
+    height: auto;
+    width: 100%;
+}
+</style>
+{% block header %}
+  
+
+<body>
+    <div class="page-wrapper">
+        <header class="header header-2 header-intro-clearance">
+            <div class="header-top">
+                <div class="container">
+                    <div class="header-left">
+                        <p>Special collection already available.</p><a href="#">&nbsp;Read more ...</a>
+                    </div><!-- End .header-left -->
+                    <div class="header-right">
+                        <ul class="top-menu">
+                            <li>
+                                <a href="#">Links</a>
+                                <ul>
+                                    <li>
+                                        <div class="header-dropdown">
+                                            <a href="#">USD</a>
+                                            <div class="header-menu">
+                                                <ul>
+                                                    <li><a href="#">Eur</a></li>
+                                                    <li><a href="#">Usd</a></li>
+                                                </ul>
+                                            </div><!-- End .header-menu -->
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="header-dropdown">
+                                            <a href="#">English</a>
+                                            <div class="header-menu">
+                                                <ul>
+                                                    <li><a href="#">English</a></li>
+                                                    <li><a href="#">French</a></li>
+                                                    <li><a href="#">Spanish</a></li>
+                                                </ul>
+                                            </div><!-- End .header-menu -->
+                                        </div>
+                                    </li>
+                                    {% if currentUser %}
+                                    <li><div class="flex-user">
+                                        <a href="#">Hi, {{currentUser}} </a>
+                                        <p style="color: red;" onclick="logout()">Log out <i class='bx bx-right-arrow-alt'></i></p>
+                                    </div></li>
+                                    {% else %}
+                                    <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+                        </ul><!-- End .top-menu -->
+                    </div><!-- End .header-right -->
+
+                </div><!-- End .container -->
+            </div><!-- End .header-top -->
+
+            <div class="header-middle">
+                <div class="container">
+                    <div class="header-left">
+                        <button class="mobile-menu-toggler">
+                            <span class="sr-only">Toggle mobile menu</span>
+                            <i class="icon-bars"></i>
+                        </button>
+                        
+                        <a href="#" class="logo">
+                            <img src="{% static 'assets/images/logo.jpg' %}" alt="PlantBooth Logo" width="105" height="25">
+                        </a>
+                    </div><!-- End .header-left -->
+
+                    <div class="header-center">
+                        <div class="header-search header-search-extended header-search-visible header-search-no-radius d-none d-lg-block">
+                            <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                            <form action="#" method="get">
+                                <div class="header-search-wrapper search-wrapper-wide">
+                                    <label for="q" class="sr-only">Search</label>
+                                    <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
+                                    <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                                </div><!-- End .header-search-wrapper -->
+                            </form>
+                        </div><!-- End .header-search -->
+                    </div>
+
+                    <div class="header-right">
+                        <div class="account">
+                            <a href="/user_dashboard" title="My account">
+                                <div class="icon">
+                                    <i class="icon-user"></i>
+                                </div>
+                                <p>Account</p>
+                            </a>
+                        </div><!-- End .compare-dropdown -->
+
+                        <div class="wishlist">
+                            <a href="wishlist.html" title="Wishlist">
+                                <div class="icon">
+                                    <i class="icon-heart-o"></i>
+                                    <span class="wishlist-count badge">3</span>
+                                </div>
+                                <p>Wishlist</p>
+                            </a>
+                        </div><!-- End .compare-dropdown -->
+
+                        <div class="dropdown cart-dropdown">
+                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                                <div class="icon">
+                                    <i class="icon-shopping-cart"></i>
+                                    <span class="cart-count">{{count}}</span>
+                                </div>
+                                <p>Cart</p>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <div class="dropdown-cart-products">
+                                    {% for item in cart_items %}
+                                    <div class="product">
+                                        <div class="product-cart-details">
+                                            <h4 class="product-title">
+                                                <a href="/product">{{item.product.product_name}}</a>
+                                            </h4>
+
+                                            <span class="cart-product-info">
+                                                <span class="cart-product-qty">{{item.quantity}}</span>
+                                                x &#8377; {{item.product.product_price}}
+                                            </span>
+                                        </div><!-- End .product-cart-details -->
+
+                                        <figure class="product-image-container">
+                                            <a href="/product" class="product-image1">
+                                                <img src="{{item.product.product_image.url}}" alt="product">
+                                            </a>
+                                        </figure>
+                                        <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                    </div><!-- End .product -->
+                                    {% empty %}
+                                    <p>Your Cart Is Empty</p>
+                                    {% endfor %}
+                                </div><!-- End .cart-product -->
+
+                                <div class="dropdown-cart-total" style="display: none;">
+                                    <span>Total</span>
+
+                                    <span class="cart-total-price">$160.00</span>
+                                </div><!-- End .dropdown-cart-total -->
+
+                                <div class="dropdown-cart-action">
+                                    <a href="/cart_page" class="btn btn-primary">View Cart</a>
+                                    <a href="/checkout" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
+                                </div><!-- End .dropdown-cart-total -->
+                            </div><!-- End .dropdown-menu -->
+                        </div><!-- End .cart-dropdown -->
+                    </div><!-- End .header-right -->
+                </div><!-- End .container -->
+            </div><!-- End .header-middle -->
+
+            <div class="header-bottom sticky-header">
+                <div class="container">
+                    <div class="header-left">
+                        <div class="dropdown category-dropdown">
+                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Browse Categories">
+                                Browse Categories
+                            </a>
+
+                            <div class="dropdown-menu">
+                                <nav class="side-nav">
+                                    <ul class="menu-vertical sf-arrows">
+                                        <li class="item-lead"><a href="#">Daily offers</a></li>
+                                        <li class="item-lead"><a href="#">Gift Ideas</a></li>
+                                        <li><a href="#">Beds</a></li>
+                                        <li><a href="#">Lighting</a></li>
+                                        <li><a href="#">Sofas & Sleeper sofas</a></li>
+                                        <li><a href="#">Storage</a></li>
+                                        <li><a href="#">Armchairs & Chaises</a></li>
+                                        <li><a href="#">Decoration </a></li>
+                                        <li><a href="#">Kitchen Cabinets</a></li>
+                                        <li><a href="#">Coffee & Tables</a></li>
+                                        <li><a href="#">Outdoor Furniture </a></li>
+                                    </ul><!-- End .menu-vertical -->
+                                </nav><!-- End .side-nav -->
+                            </div><!-- End .dropdown-menu -->
+                        </div><!-- End .category-dropdown -->
+                    </div><!-- End .header-left -->
+
+                    <div class="header-center">
+                        <nav class="main-nav">
+                            <ul class="menu sf-arrows">
+                                <li class="megamenu-container active">
+                                    <a href="index.html" class="">Home</a>
+                                </li>
+                                <li>
+                                    <a href="/shop" class="">Shop</a>
+                                </li>
+                                <li>
+                                    <a href="/product" class="">Product</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="#" class="sf-with-ul">Pages</a>
+
+                                    <ul>
+                                        <li>
+                                            <a href="/about" class="">About</a>
+                                        </li>
+                                        <li>
+                                            <a href="/contact" class="">Contact</a>
+                                        </li>
+                                        <li><a href="/faq">FAQs</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="/blog" class="">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="/vendor" class="">Become a Seller</a>
+                                </li>
+                            </ul><!-- End .menu -->
+                        </nav><!-- End .main-nav -->
+                    </div><!-- End .header-center -->
+
+                    <div class="header-right">
+                        <i class="la la-lightbulb-o"></i><p>Clearance<span class="highlight">&nbsp;Up to 30% Off</span></p>
+                    </div>
+                </div><!-- End .container -->
+            </div><!-- End .header-bottom -->
+        </header><!-- End .header -->
+
+        <main class="main">
+            <div class="intro-slider-container">
+                <div class="owl-carousel owl-simple owl-light owl-nav-inside" data-toggle="owl" data-owl-options='{"nav": false}'>
+                    <!-- End .intro-slide -->
+
+                    <div class="intro-slide" style="background-image: url('{% static "assets/images/plant2.jpg" %}');">
+                        <div class="container intro-content">
+                            <h3 class="intro-subtitle">Deals and Promotions</h3><!-- End .h3 intro-subtitle -->
+                            <h1 class="intro-title">Ypperlig <br>Coffee Table <br><span class="text-primary"><sup>$</sup>49,99</span></h1><!-- End .intro-title -->
+
+                            <a href="category.html" class="btn btn-primary">
+                                <span>Shop Now</span>
+                                <i class="icon-long-arrow-right"></i>
+                            </a>
+                        </div><!-- End .container intro-content -->
+                    </div><!-- End .intro-slide -->
+                    <div class="intro-slide" style="background-image: url('{% static "assets/images/plant3.jpeg" %}');">
+                        <div class="container intro-content">
+                            <h3 class="intro-subtitle">Bedroom Furniture</h3><!-- End .h3 intro-subtitle -->
+                            <h1 class="intro-title">Find Comfort <br>That Suits You.</h1><!-- End .intro-title -->
+
+                            <a href="category.html" class="btn btn-primary">
+                                <span>Shop Now</span>
+                                <i class="icon-long-arrow-right"></i>
+                            </a>
+                        </div><!-- End .container intro-content -->
+                    </div>
+                    <div class="intro-slide" style="background-image: url('{% static "assets/images/slider3.jpg" %}');">
+                        <div class="container intro-content">
+                        
+
+                            <a href="category.html" class="btn btn-primary">
+                                <span>Shop Now</span>
+                                <i class="icon-long-arrow-right"></i>
+                            </a>
+                        </div><!-- End .container intro-content -->
+                    </div><!-- End .intro-slide -->
+                </div><!-- End .owl-carousel owl-simple -->
+
+                <span class="slider-loader text-white"></span><!-- End .slider-loader -->
+            </div><!-- End .intro-slider-container -->
+
+            <div class="brands-border owl-carousel owl-simple" data-toggle="owl" 
+                data-owl-options='{
+                    "nav": false, 
+                    "dots": false,
+                    "margin": 0,
+                    "loop": false,
+                    "responsive": {
+                        "0": {
+                            "items":2
+                        },
+                        "420": {
+                            "items":3
+                        },
+                        "600": {
+                            "items":4
+                        },
+                        "900": {
+                            "items":5
+                        },
+                        "1024": {
+                            "items":6
+                        },
+                        "1360": {
+                            "items":7
+                        }
+                    }
+                }'>
+                <a href="#" class="brand">
+                    <img src="{% static 'assets/images/brands/1.png' %}" alt="Brand Name">
+                </a>
+
+                <a href="#" class="brand">
+                    <img src="{% static 'assets/images/brands/2.png' %}" alt="Brand Name">
+                </a>
+
+                <a href="#" class="brand">
+                    <img src="{% static 'assets/images/brands/3.png' %}" alt="Brand Name">
+                </a>
+
+                <a href="#" class="brand">
+                    <img src="{% static 'assets/images/brands/4.png' %}" alt="Brand Name">
+                </a>
+
+                <a href="#" class="brand">
+                    <img src="{% static 'assets/images/brands/5.png' %}" alt="Brand Name">
+                </a>
+
+                <a href="#" class="brand">
+                    <img src="{% static 'assets/images/brands/6.png' %}" alt="Brand Name">
+                </a>
+
+                <a href="#" class="brand">
+                    <img src="{% static 'assets/images/brands/7.png' %}" alt="Brand Name">
+                </a>
+            </div><!-- End .owl-carousel -->
+
+            <div class="mb-3 mb-lg-5"></div><!-- End .mb-3 mb-lg-5 -->
+
+            <div class="banner-group">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-5">
+                            <div class="banner banner-large banner-overlay banner-overlay-light">
+                                <a href="#">
+                                    <img src="{% static 'assets/images/showoff1.jpg' %}" alt="Banner">
+                                </a>
+
+                                <div class="banner-content banner-content-top">
+                                    <h4 class="banner-subtitle" style="color: white;">Clearence</h4><!-- End .banner-subtitle -->
+                                    <h3 class="banner-title" style="color: white;">Indoor Plants</h3><!-- End .banner-title -->
+                                        <div class="banner-text" style="color: white;">starting from $9.99</div> <!-- End .banner-text -->                                                                    
+                                    <a href="#" class="btn btn-outline-gray banner-link" style="color: white;">Shop Now<i class="icon-long-arrow-right"></i></a>
+                                </div><!-- End .banner-content -->
+                            </div><!-- End .banner -->
+                        </div><!-- End .col-lg-5 -->
+
+                        <div class="col-md-6 col-lg-3">
+                            <div class="banner banner-overlay">
+                                <a href="#">
+                                    <img src="{% static 'assets/images/showof3.jpg' %}" alt="Banner">
+                                </a>
+
+                                <div class="banner-content banner-content-bottom">
+                                    <h4 class="banner-subtitle text-grey">On Sale</h4><!-- End .banner-subtitle -->
+                                    <h3 class="banner-title text-white">Air-Purifying <br>Plants</h3><!-- End .banner-title -->
+                                    <div class="banner-text text-white">from $39.99</div><!-- End .banner-text -->
+                                    <a href="#" class="btn btn-outline-white banner-link">Discover Now<i class="icon-long-arrow-right"></i></a>
+                                </div><!-- End .banner-content -->
+                            </div><!-- End .banner -->
+                        </div><!-- End .col-lg-3 -->
+
+                        <div class="col-md-6 col-lg-4">
+                            <div class="banner banner-overlay">
+                                <a href="#">
+                                    <img src="{% static 'assets/images/showoff2.jpg' %}" alt="Banner">
+                                </a>
+
+                                <div class="banner-content banner-content-top">
+                                    <h4 class="banner-subtitle text-grey">New Arrivals</h4><!-- End .banner-subtitle -->
+                                    <h3 class="banner-title text-white">Herb Garden  <br>Kits</h3><!-- End .banner-title -->
+                                    <a href="#" class="btn btn-outline-white banner-link">Discover Now<i class="icon-long-arrow-right"></i></a>
+                                </div><!-- End .banner-content -->
+                            </div><!-- End .banner -->
+
+                            <div class="banner banner-overlay banner-overlay-light">
+                                <a href="#">
+                                    <img src="{% static 'assets/images/demos/demo-2/banners/banner-4.jpg' %}" alt="Banner">
+                                </a>
+
+                                <div class="banner-content banner-content-top">
+                                    <h4 class="banner-subtitle">On Sale</h4><!-- End .banner-subtitle -->
+                                    <h3 class="banner-title">Succulent Collection</h3><!-- End .banner-title -->
+                                    <div class="banner-text">up to 30% off</div><!-- End .banner-text -->
+                                    <a href="#" class="btn btn-outline-gray banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
+                                </div><!-- End .banner-content -->
+                            </div><!-- End .banner -->
+                        </div><!-- End .col-lg-4 -->
+                    </div><!-- End .row -->
+                </div><!-- End .container -->
+            </div><!-- End .banner-group -->
+
+            <div class="mb-3"></div><!-- End .mb-6 -->
+
+            <div class="container">
+                <ul class="nav nav-pills nav-border-anim nav-big justify-content-center mb-3" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="products-featured-link" data-toggle="tab" href="#products-featured-tab" role="tab" aria-controls="products-featured-tab" aria-selected="true">Featured</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="products-sale-link" data-toggle="tab" href="#products-sale-tab" role="tab" aria-controls="products-sale-tab" aria-selected="false">On Sale</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="products-top-link" data-toggle="tab" href="#products-top-tab" role="tab" aria-controls="products-top-tab" aria-selected="false">Top Rated</a>
+                    </li>
+                </ul>
+            </div><!-- End .container -->
+
+            <div class="container-fluid">
+                <div class="tab-content tab-content-carousel">
+                    <div class="tab-pane p-0 fade show active" id="products-featured-tab" role="tabpanel" aria-labelledby="products-featured-link">
+                        <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                            data-owl-options='{
+                                "nav": false, 
+                                "dots": true,
+                                "margin": 20,
+                                "loop": false,
+                                "responsive": {
+                                    "0": {
+                                        "items":2
+                                    },
+                                    "480": {
+                                        "items":2
+                                    },
+                                    "768": {
+                                        "items":3
+                                    },
+                                    "992": {
+                                        "items":4
+                                    },
+                                    "1200": {
+                                        "items":5
+                                    },
+                                    "1600": {
+                                        "items":6,
+                                        "nav": true
+                                    }
+                                }
+                            }'>
+                            <div class="product product-11 text-center">
+                                <figure class="product-media">
+                                    <a href="/product">
+                                        <img src="{% static 'assets/images/product1.jpg' %}" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product2.jpg' %}" alt="Product image" class="product-image-hover">
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <h3 class="product-title"><a href="/product">Monstera Deliciosa</a></h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        &#8377; 25,00
+                                    </div><!-- End .product-price -->
+                                </div><!-- End .product-body -->
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product -->
+
+                            <div class="product product-11 text-center">
+                                <figure class="product-media">
+                                    <a href="/product">
+                                        <img src="{% static 'assets/images/product2.jpg' %}" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product1.jpg' %}" alt="Product image" class="product-image-hover">
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <h3 class="product-title"><a href="/product">Snake Plant (Sansevieria)</a></h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        &#8377; 20,00
+                                    </div><!-- End .product-price -->
+
+                                    <div class="product-nav product-nav-dots">
+                                        <a href="#" class="active" style="background: #1f1e18;"><span class="sr-only">Color name</span></a>
+                                        <a href="#" style="background: #e8e8e8;"><span class="sr-only">Color name</span></a>
+                                    </div><!-- End .product-nav -->
+                                </div><!-- End .product-body -->
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product -->
+
+                            <div class="product product-11 text-center">
+                                <figure class="product-media">
+                                    <span class="product-label label-circle label-new">New</span>
+                                    <a href="/product">
+                                        <img src="{% static 'assets/images/pr3alternate.jpg' %}" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product4.jpg' %}" alt="Product image" class="product-image-hover">
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
+
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <h3 class="product-title"><a href="/product">Pothos (Devil's Ivy)</a></h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        &#8377;970,00
+                                    </div><!-- End .product-price -->
+                                </div><!-- End .product-body -->
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product -->
+
+                            <div class="product product-11 text-center">
+                                <figure class="product-media">
+                                    <span class="product-label label-circle label-sale">Sale</span>
+                                    <a href="/product">
+                                        <img src="{% static 'assets/images/product4.jpg' %}" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product5.jpg' %}" alt="Product image" class="product-image-hover">
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
+
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <h3 class="product-title"><a href="/product">Fiddle Leaf Fig (Ficus lyrata)</a></h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        <span class="new-price">&#8377; 30,00</span>
+                                        <span class="old-price">Was &#8377; 44,00</span>
+                                    </div><!-- End .product-price -->
+
+                                    <div class="product-nav product-nav-dots">
+                                        <a href="#" class="active" style="background: #878883;"><span class="sr-only">Color name</span></a>
+                                        <a href="#" style="background: #dfd5c2;"><span class="sr-only">Color name</span></a>
+                                    </div><!-- End .product-nav -->
+                                </div><!-- End .product-body -->
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product -->
+
+                            <div class="product product-11 text-center">
+                                <figure class="product-media">
+                                    <a href="/product">
+                                        <img src="{% static 'assets/images/product5.jpg' %}" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product6.jpg' %}"" alt="Product image" class="product-image-hover">
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
+
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <h3 class="product-title"><a href="/product">Petite Table Lamp</a></h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        $675,00
+                                    </div><!-- End .product-price -->
+
+                                    <div class="product-nav product-nav-dots">
+                                        <a href="#" class="active" style="background: #74543e;"><span class="sr-only">Color name</span></a>
+                                        <a href="#" style="background: #e8e8e8;"><span class="sr-only">Color name</span></a>
+                                    </div><!-- End .product-nav -->
+                                </div><!-- End .product-body -->
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product -->
+
+                            <div class="product product-11 text-center">
+                                <figure class="product-media">
+                                    <a href="/product">
+                                        <img src="{% static 'assets/images/product1.jpg' %}" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product2.jpg' %}"" alt="Product image" class="product-image-hover">
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
+
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <h3 class="product-title"><a href="/product">Elephant Armchair</a></h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        $457,00
+                                    </div><!-- End .product-price -->
+                                </div><!-- End .product-body -->
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product -->
+
+                            <div class="product product-11 text-center">
+                                <figure class="product-media">
+                                    <a href="/product">
+                                        <img src="{% static 'assets/images/product2.jpg' %}" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product1.jpg' %}"" alt="Product image" class="product-image-hover">
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
+
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <h3 class="product-title"><a href="/product">Butler Stool Ladder</a></h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        $251,00
+                                    </div><!-- End .product-price -->
+                                </div><!-- End .product-body -->
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product -->
+                        </div><!-- End .owl-carousel -->
+                    </div><!-- .End .tab-pane -->
+                    <div class="tab-pane p-0 fade" id="products-sale-tab" role="tabpanel" aria-labelledby="products-sale-link">
+                        <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                            data-owl-options='{
+                                "nav": false, 
+                                "dots": true,
+                                "margin": 20,
+                                "loop": false,
+                                "responsive": {
+                                    "0": {
+                                        "items":2
+                                    },
+                                    "480": {
+                                        "items":2
+                                    },
+                                    "768": {
+                                        "items":3
+                                    },
+                                    "992": {
+                                        "items":4
+                                    },
+                                    "1200": {
+                                        "items":5
+                                    },
+                                    "1600": {
+                                        "items":6,
+                                        "nav": true
+                                    }
+                                }
+                            }'>
+                            <div class="product product-11 text-center">
+                                <figure class="product-media">
+                                    <a href="/product">
+                                        <img src="{% static 'assets/images/product3.jpg' %}" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product1.jpg' %}" alt="Product image" class="product-image-hover">
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
+
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <h3 class="product-title"><a href="/product">Petite Table Lamp</a></h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        $675,00
+                                    </div><!-- End .product-price -->
+
+                                    <div class="product-nav product-nav-dots">
+                                        <a href="#" class="active" style="background: #74543e;"><span class="sr-only">Color name</span></a>
+                                        <a href="#" style="background: #e8e8e8;"><span class="sr-only">Color name</span></a>
+                                    </div><!-- End .product-nav -->
+                                </div><!-- End .product-body -->
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product -->
+
+                            <div class="product product-11 text-center">
+                                <figure class="product-media">
+                                    <a href="/product">
+                                        <img src="{% static 'assets/images/product5.jpg' %}"" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product6.jpg' %}"" alt="Product image" class="product-image-hover">
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
+
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <h3 class="product-title"><a href="/product">Elephant Armchair</a></h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        $457,00
+                                    </div><!-- End .product-price -->
+                                </div><!-- End .product-body -->
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product -->
+
+                            <div class="product product-11 text-center">
+                                <figure class="product-media">
+                                    <a href="/product">
+                                        <img src="{% static 'assets/images/product5.jpg' %}"" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product6.jpg' %}"" alt="Product image" class="product-image-hover">
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
+
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <h3 class="product-title"><a href="/product">Butler Stool Ladder</a></h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        $251,00
+                                    </div><!-- End .product-price -->
+                                </div><!-- End .product-body -->
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product -->
+                        </div><!-- End .owl-carousel -->
+                    </div><!-- .End .tab-pane -->
+                    <div class="tab-pane p-0 fade" id="products-top-tab" role="tabpanel" aria-labelledby="products-top-link">
+                        <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl" 
+                            data-owl-options='{
+                                "nav": false, 
+                                "dots": true,
+                                "margin": 20,
+                                "loop": false,
+                                "responsive": {
+                                    "0": {
+                                        "items":2
+                                    },
+                                    "480": {
+                                        "items":2
+                                    },
+                                    "768": {
+                                        "items":3
+                                    },
+                                    "992": {
+                                        "items":4
+                                    },
+                                    "1200": {
+                                        "items":5
+                                    },
+                                    "1600": {
+                                        "items":6,
+                                        "nav": true
+                                    }
+                                }
+                            }'>
+                            <div class="product product-11 text-center">
+                                <figure class="product-media">
+                                    <a href="/product">
+                                        <img src="{% static 'assets/images/product5.jpg' %}"" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product6.jpg' %}"" alt="Product image" class="product-image-hover">
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <h3 class="product-title"><a href="/product">Octo 4240</a></h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        $746,00
+                                    </div><!-- End .product-price -->
+
+                                    <div class="product-nav product-nav-dots">
+                                        <a href="#" class="active" style="background: #1f1e18;"><span class="sr-only">Color name</span></a>
+                                        <a href="#" style="background: #e8e8e8;"><span class="sr-only">Color name</span></a>
+                                    </div><!-- End .product-nav -->
+                                </div><!-- End .product-body -->
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product -->
+
+                            <div class="product product-11 text-center">
+                                <figure class="product-media">
+                                    <span class="product-label label-circle label-new">New</span>
+                                    <a href="/product">
+                                        <img src="{% static 'assets/images/product2.jpg' %}"" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product4.jpg' %}"" alt="Product image" class="product-image-hover">
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
+
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <h3 class="product-title"><a href="/product">Flow Slim Armchair</a></h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        $970,00
+                                    </div><!-- End .product-price -->
+                                </div><!-- End .product-body -->
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product -->
+
+                            <div class="product product-11 text-center">
+                                <figure class="product-media">
+                                    <span class="product-label label-circle label-sale">Sale</span>
+                                    <a href="/product">
+                                        <img src="{% static 'assets/images/product3.jpg' %}"" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product6.jpg' %}"" alt="Product image" class="product-image-hover">J
+                                    </a>
+
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
+
+                                </figure><!-- End .product-media -->
+
+                                <div class="product-body">
+                                    <h3 class="product-title"><a href="/product">Roots Sofa Bed</a></h3><!-- End .product-title -->
+                                    <div class="product-price">
+                                        <span class="new-price">$337,00</span>
+                                        <span class="old-price">Was $449,00</span>
+                                    </div><!-- End .product-price -->
+
+                                    <div class="product-nav product-nav-dots">
+                                        <a href="#" class="active" style="background: #878883;"><span class="sr-only">Color name</span></a>
+                                        <a href="#" style="background: #dfd5c2;"><span class="sr-only">Color name</span></a>
+                                    </div><!-- End .product-nav -->
+                                </div><!-- End .product-body -->
+                                <div class="product-action">
+                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                </div><!-- End .product-action -->
+                            </div><!-- End .product -->
+                        </div><!-- End .owl-carousel -->
+                    </div><!-- .End .tab-pane -->
+                </div><!-- End .tab-content -->
+            </div><!-- End .container-fluid -->
+
+            <div class="mb-5"></div><!-- End .mb-5 -->
+
+            <div class="bg-light deal-container pt-5 pb-3 mb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <div class="deal">
+                                <div class="deal-content">
+                                    <h4>Limited Quantities</h4>
+                                    <h2>Deal of the Day</h2>
+
+                                    <h3 class="product-title"><a href="/product">POÄNG</a></h3><!-- End .product-title -->
+
+                                    <div class="product-price">
+                                        <span class="new-price">$149.00</span>
+                                        <span class="old-price">Was $240.00</span>
+                                    </div><!-- End .product-price -->
+
+                                    <div class="deal-countdown" data-until="+10h"></div><!-- End .deal-countdown -->
+
+                                    <a href="/product" class="btn btn-primary">
+                                        <span>Shop Now</span><i class="icon-long-arrow-right"></i>
+                                    </a>
+                                </div><!-- End .deal-content -->
+                                <div class="deal-image">
+                                    <a href="/product">
+                                        <img src="{% static 'assets/images/dealim.jpg' %}" alt="image">
+                                    </a>
+                                </div><!-- End .deal-image -->
+                            </div><!-- End .deal -->
+                        </div><!-- End .col-lg-9 -->
+
+                        <div class="col-lg-3">
+                            <div class="banner banner-overlay banner-overlay-light text-center d-none d-lg-block">
+                                <a href="#">
+                                    <img src="{% static 'assets/images/dealright.jpg' %}" alt="Banner">
+                                </a>
+
+                                <div class="banner-content banner-content-top banner-content-center">
+                                    <h4 class="banner-subtitle" style=" color: white;">The Best Choice</h4><!-- End .banner-subtitle -->
+                                    <h3 class="banner-title" style=" color: white;">AGEN</h3><!-- End .banner-title -->
+                                    <div class="banner-text text-primary" style=" color: white;">$49.99</div><!-- End .banner-text -->
+                                    <a href="#" class="btn btn-outline-gray banner-link" style="color: white;">Shop Now<i class="icon-long-arrow-right"></i></a>
+                                </div><!-- End .banner-content -->
+                            </div><!-- End .banner -->
+                        </div><!-- End .col-lg-3 -->
+                    </div><!-- End .row -->
+                </div><!-- End .container -->
+            </div><!-- End .bg-light -->
+
+            <div class="mb-6"></div><!-- End .mb-6 -->
+
+            <div class="container">
+                <div class="heading heading-center mb-3">
+                    <h2 class="title">Top Selling Products</h2><!-- End .title -->
+
+                    <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="top-all-link" data-toggle="tab" href="#top-all-tab" role="tab" aria-controls="top-all-tab" aria-selected="true">All</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="top-fur-link" data-toggle="tab" href="#top-fur-tab" role="tab" aria-controls="top-fur-tab" aria-selected="false">Furniture</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="top-decor-link" data-toggle="tab" href="#top-decor-tab" role="tab" aria-controls="top-decor-tab" aria-selected="false">Decoration</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="top-light-link" data-toggle="tab" href="#top-light-tab" role="tab" aria-controls="top-light-tab" aria-selected="false">Lighting</a>
+                        </li>
+                    </ul>
+                </div><!-- End .heading -->
+
+                <div class="tab-content">
+                    <div class="tab-pane p-0 fade show active" id="top-all-tab" role="tabpanel" aria-labelledby="top-all-link">
+                        <div class="products">
+                            <div class="row justify-content-center">
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product1.jpg' %}"" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product2.jpg' %}"" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Lighting</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Petite Table Lamp</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $401,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product2.jpg' %}"" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product3.jpg' %}" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Decor</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Madra Log Holder</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $401,00
+                                            </div><!-- End .product-price -->
+
+                                            <div class="product-nav product-nav-dots">
+                                                <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
+                                                <a href="#" style="background: #927764;"><span class="sr-only">Color name</span></a>
+                                            </div><!-- End .product-nav -->
+
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <span class="product-label label-circle label-sale">Sale</span>
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product2.jpg' %}"" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product2.jpg' %}"" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Furniture</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Garden Armchair</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                <span class="new-price">$94,00</span>
+                                                <span class="old-price">Was $94,00</span>
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product2.jpg' %}"" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product2.jpg' %}"" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Lighting</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Carronade Large Suspension Lamp</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $401,00
+                                            </div><!-- End .product-price -->
+
+                                            <div class="product-nav product-nav-dots">
+                                                <a href="#" class="active" style="background: #e8e8e8;"><span class="sr-only">Color name</span></a>
+                                                <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
+                                            </div><!-- End .product-nav -->
+
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product2.jpg' %}"" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product2.jpg' %}"" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Decor</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Original Outdoor Beanbag</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $259,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <span class="product-label label-circle label-new">New</span>
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product2.jpg' %}"" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product2.jpg' %}"" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Furniture</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">2-Seater</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $3.107,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product5.jpg' %}"" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product6.jpg' %}"" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Furniture</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Wingback Chair</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $2.486,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product5.jpg' %}"" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product6.jpg' %}"" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Decor</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Cushion Set 3 Pieces</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $199,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product5.jpg' %}"" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product6.jpg' %}"" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Decor</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Cushion Set 3 Pieces</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $199,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product5.jpg' %}"" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product3.jpg' %}"" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Lighting</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Carronade Table Lamp</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $499,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .products -->
+                    </div><!-- .End .tab-pane -->
+                    <div class="tab-pane p-0 fade" id="top-fur-tab" role="tabpanel" aria-labelledby="top-fur-link">
+                        <div class="products">
+                            <div class="row justify-content-center">
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <span class="product-label label-circle label-sale">Sale</span>
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product5.jpg' %}"" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product6.jpg' %}"" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Furniture</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Garden Armchair</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                <span class="new-price">$94,00</span>
+                                                <span class="old-price">Was $94,00</span>
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <span class="product-label label-circle label-new">New</span>
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product5.jpg' %}" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product6.jpg' %}" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Furniture</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">2-Seater</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $3.107,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+                                
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product5.jpg' %}" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product6.jpg' %}" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Furniture</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Wingback Chair</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $2.486,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .products -->
+                    </div><!-- .End .tab-pane -->
+                    <div class="tab-pane p-0 fade" id="top-decor-tab" role="tabpanel" aria-labelledby="top-decor-link">
+                        <div class="products">
+                            <div class="row justify-content-center">
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product5.jpg' %}" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product6.jpg' %}" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Decor</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Madra Log Holder</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $401,00
+                                            </div><!-- End .product-price -->
+
+                                            <div class="product-nav product-nav-dots">
+                                                <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
+                                                <a href="#" style="background: #927764;"><span class="sr-only">Color name</span></a>
+                                            </div><!-- End .product-nav -->
+
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product5.jpg' %}" alt="Product image" class="product-image">
+                                        <img src="{% static 'assets/images/product6.jpg' %}" alt="Product image" class="product-image-hover"> 
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Decor</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Original Outdoor Beanbag</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $259,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product5.jpg' %}" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product6.jpg' %}" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Decor</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Cushion Set 3 Pieces</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $199,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product5.jpg' %}" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product6.jpg' %}" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Decor</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Cushion Set 3 Pieces</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $199,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .products -->
+                    </div><!-- .End .tab-pane -->
+                    <div class="tab-pane p-0 fade" id="top-light-tab" role="tabpanel" aria-labelledby="top-light-link">
+                        <div class="products">
+                            <div class="row justify-content-center">
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product5.jpg' %}" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product6.jpg' %}" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Lighting</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Petite Table Lamp</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $401,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-media">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product5.jpg' %}" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product6.jpg' %}" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Lighting</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Carronade Large Suspension Lamp</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $401,00
+                                            </div><!-- End .product-price -->
+
+                                            <div class="product-nav product-nav-dots">
+                                                <a href="#" class="active" style="background: #e8e8e8;"><span class="sr-only">Color name</span></a>
+                                                <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
+                                            </div><!-- End .product-nav -->
+
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-5col">
+                                    <div class="product product-11 text-center">
+                                        <figure class="product-faccomedia">
+                                            <a href="/product">
+                                                <img src="{% static 'assets/images/product5.jpg' %}" alt="Product image" class="product-image">
+                                                <img src="{% static 'assets/images/product6.jpg' %}" alt="Product image" class="product-image-hover">
+                                            </a>
+
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        </figure><!-- End .product-media -->
+
+                                        <div class="product-body">
+                                            <div class="product-cat">
+                                                <a href="#">Lighting</a>
+                                            </div><!-- End .product-cat -->
+                                            <h3 class="product-title"><a href="/product">Carronade Table Lamp</a></h3><!-- End .product-title -->
+                                            <div class="product-price">
+                                                $499,00
+                                            </div><!-- End .product-price -->
+                                        </div><!-- End .product-body -->
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        </div><!-- End .product-action -->
+                                    </div><!-- End .product -->
+                                </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .products -->
+                    </div><!-- .End .tab-pane -->
+                </div><!-- End .tab-content -->
+            </div><!-- End .container -->
+
+            <div class="container">
+                <hr class="mt-1 mb-6">
+            </div><!-- End .container -->
+            
+            <div class="blog-posts">
+                <div class="container">
+                    <h2 class="title text-center">From Our Blog</h2><!-- End .title-lg text-center -->
+
+                    <div class="owl-carousel owl-simple carousel-with-shadow" data-toggle="owl" 
+                        data-owl-options='{
+                            "nav": false, 
+                            "dots": true,
+                            "items": 3,
+                            "margin": 20,
+                            "loop": false,
+                            "responsive": {
+                                "0": {
+                                    "items":1
+                                },
+                                "600": {
+                                    "items":2
+                                },
+                                "992": {
+                                    "items":3
+                                }
+                            }
+                        }'>
+                        <article class="entry entry-display">
+                            <figure class="entry-media">
+                                <a href="single.html">
+                                    <img src="{% static 'assets/images/demos/demo-2/blog/post-1.jpg' %}" alt="image desc">
+                                </a>
+                            </figure><!-- End .entry-media -->
+
+                            <div class="entry-body text-center">
+                                <div class="entry-meta">
+                                    <a href="#">Nov 22, 2018</a>, 0 Comments
+                                </div><!-- End .entry-meta -->
+
+                                <h3 class="entry-title">
+                                    <a href="single.html">Sed adipiscing ornare.</a>
+                                </h3><!-- End .entry-title -->
+
+                                <div class="entry-content">
+                                    <a href="single.html" class="read-more">Continue Reading</a>
+                                </div><!-- End .entry-content -->
+                            </div><!-- End .entry-body -->
+                        </article><!-- End .entry -->
+                    
+                        <article class="entry entry-display">
+                            <figure class="entry-media">
+                                <a href="single.html">
+                                    <img src="{% static 'assets/images/demos/demo-2/blog/post-2.jpg' %}" alt="image desc">
+                                </a>
+                            </figure><!-- End .entry-media -->
+
+                            <div class="entry-body text-center">
+                                <div class="entry-meta">
+                                    <a href="#">Dec 12, 2018</a>, 0 Comments
+                                </div><!-- End .entry-meta -->
+
+                                <h3 class="entry-title">
+                                    <a href="single.html">Fusce lacinia arcuet nulla.</a>
+                                </h3><!-- End .entry-title -->
+
+                                <div class="entry-content">
+                                    <a href="single.html" class="read-more">Continue Reading</a>
+                                </div><!-- End .entry-content -->
+                            </div><!-- End .entry-body -->
+                        </article><!-- End .entry -->
+
+                        <article class="entry entry-display">
+                            <figure class="entry-media">
+                                <a href="single.html">
+                                    <img src="{% static 'assets/images/demos/demo-2/blog/post-3.jpg' %}" alt="image desc">
+                                </a>
+                            </figure><!-- End .entry-media -->
+
+                            <div class="entry-body text-center">
+                                <div class="entry-meta">
+                                    <a href="#">Dec 19, 2018</a>, 2 Comments
+                                </div><!-- End .entry-meta -->
+
+                                <h3 class="entry-title">
+                                    <a href="single.html">Quisque volutpat mattis eros.</a>
+                                </h3><!-- End .entry-title -->
+
+                                <div class="entry-content">
+                                    <a href="single.html" class="read-more">Continue Reading</a>
+                                </div><!-- End .entry-content -->
+                            </div><!-- End .entry-body -->
+                        </article><!-- End .entry -->
+                    </div><!-- End .owl-carousel -->
+
+                    <div class="more-container text-center mt-2">
+                        <a href="/blog" class="btn btn-outline-darker btn-more"><span>View more articles</span><i class="icon-long-arrow-right"></i></a>
+                    </div><!-- End .more-container -->
+                </div><!-- End .container -->
+            </div><!-- End .blog-posts -->
+        </main><!-- End .main -->
+
+        <footer class="footer footer-2">
+            <div class="icon-boxes-container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="icon-box icon-box-side">
+                                <span class="icon-box-icon text-dark">
+                                    <i class="icon-rocket"></i>
+                                </span>
+                                <div class="icon-box-content">
+                                    <h3 class="icon-box-title">Free Shipping</h3><!-- End .icon-box-title -->
+                                    <p>orders $50 or more</p>
+                                </div><!-- End .icon-box-content -->
+                            </div><!-- End .icon-box -->
+                        </div><!-- End .col-sm-6 col-lg-3 -->
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="icon-box icon-box-side">
+                                <span class="icon-box-icon text-dark">
+                                    <i class="icon-rotate-left"></i>
+                                </span>
+
+                                <div class="icon-box-content">
+                                    <h3 class="icon-box-title">Free Returns</h3><!-- End .icon-box-title -->
+                                    <p>within 30 days</p>
+                                </div><!-- End .icon-box-content -->
+                            </div><!-- End .icon-box -->
+                        </div><!-- End .col-sm-6 col-lg-3 -->
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="icon-box icon-box-side">
+                                <span class="icon-box-icon text-dark">
+                                    <i class="icon-info-circle"></i>
+                                </span>
+
+                                <div class="icon-box-content">
+                                    <h3 class="icon-box-title">Get 20% Off 1 Item</h3><!-- End .icon-box-title -->
+                                    <p>When you sign up</p>
+                                </div><!-- End .icon-box-content -->
+                            </div><!-- End .icon-box -->
+                        </div><!-- End .col-sm-6 col-lg-3 -->
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="icon-box icon-box-side">
+                                <span class="icon-box-icon text-dark">
+                                    <i class="icon-life-ring"></i>
+                                </span>
+
+                                <div class="icon-box-content">
+                                    <h3 class="icon-box-title">We Support</h3><!-- End .icon-box-title -->
+                                    <p>24/7 amazing services</p>
+                                </div><!-- End .icon-box-content -->
+                            </div><!-- End .icon-box -->
+                        </div><!-- End .col-sm-6 col-lg-3 -->
+                    </div><!-- End .row -->
+                </div><!-- End .container -->
+            </div><!-- End .icon-boxes-container -->
+
+        	<div class="footer-newsletter bg-image" style="background-image: url('{% static "assets/images/backgrounds/bg-2.jpg" %}')">
+        		<div class="container">
+        			<div class="heading text-center">
+                        <h3 class="title">Get The Latest Deals</h3><!-- End .title -->
+                        <p class="title-desc">and receive <span>$20 coupon</span> for first shopping</p><!-- End .title-desc -->
+                    </div><!-- End .heading -->
+
+                    <div class="row">
+                    	<div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                            <form action="#">
+    							<div class="input-group">
+    								<input type="email" class="form-control" placeholder="Enter your Email Address" aria-label="Email Adress" aria-describedby="newsletter-btn" required>
+    								<div class="input-group-append">
+    									<button class="btn btn-primary" type="submit" id="newsletter-btn"><span>Subscribe</span><i class="icon-long-arrow-right"></i></button>
+    								</div><!-- .End .input-group-append -->
+    							</div><!-- .End .input-group -->
+                            </form>
+                    	</div><!-- End .col-sm-10 offset-sm-1 col-lg-6 offset-lg-3 -->
+                    </div><!-- End .row -->
+        		</div><!-- End .container -->
+        	</div><!-- End .footer-newsletter bg-image -->
+
+        	<div class="footer-middle">
+	            <div class="container">
+	            	<div class="row">
+	            		<div class="col-sm-12 col-lg-6">
+	            			<div class="widget widget-about">
+	            				<img src="{% static 'assets/images/logo.jpg' %}" class="footer-logo" alt="Footer Logo" width="200px" height="200px">
+	            				<p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. </p>
+	            				
+	            				<div class="widget-about-info">
+	            					<div class="row">
+	            						<div class="col-sm-6 col-md-4">
+	            							<span class="widget-about-title">Got Question? Call us 24/7</span>
+	            							<a href="tel:123456789">+0123 456 789</a>
+	            						</div><!-- End .col-sm-6 -->
+	            						<div class="col-sm-6 col-md-8">
+	            							<span class="widget-about-title">Payment Method</span>
+	            							<figure class="footer-payments">
+							        			<img src="{% static 'assets/images/payments.png' %}" alt="Payment methods" width="272" height="20">
+							        		</figure><!-- End .footer-payments -->
+	            						</div><!-- End .col-sm-6 -->
+	            					</div><!-- End .row -->
+	            				</div><!-- End .widget-about-info -->
+	            			</div><!-- End .widget about-widget -->
+	            		</div><!-- End .col-sm-12 col-lg-3 -->
+
+	            		<div class="col-sm-4 col-lg-2">
+	            			<div class="widget">
+	            				<h4 class="widget-title">Information</h4><!-- End .widget-title -->
+
+	            				<ul class="widget-list">
+	            					<li><a href="/about">About PlantBooth</a></li>
+	            					<li><a href="#">How to shop on Plant Booth</a></li>
+	            					<li><a href="#">FAQ</a></li>
+	            					<li><a href="/contact">Contact us</a></li>
+                                    {% if currentUser %}
+                                    <li><div class="flex-user">
+                                        <p style="color: red;" onclick="logout()">Log out <i class='bx bx-right-arrow-alt'></i></p>
+                                    </div></li>
+                                    {% else %}
+                                    <li><a href="#signin-modal" data-toggle="modal">Login</a></li>
+                                    {% endif %}
+	            				</ul><!-- End .widget-list -->
+	            			</div><!-- End .widget -->
+	            		</div><!-- End .col-sm-4 col-lg-3 -->
+
+	            		<div class="col-sm-4 col-lg-2">
+	            			<div class="widget">
+	            				<h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
+
+	            				<ul class="widget-list">
+	            					<li><a href="#">Payment Methods</a></li>
+	            					<li><a href="#">Money-back guarantee!</a></li>
+	            					<li><a href="#">Returns</a></li>
+	            					<li><a href="#">Shipping</a></li>
+	            					<li><a href="#">Terms and conditions</a></li>
+	            					<li><a href="#">Privacy Policy</a></li>
+	            				</ul><!-- End .widget-list -->
+	            			</div><!-- End .widget -->
+	            		</div><!-- End .col-sm-4 col-lg-3 -->
+
+	            		<div class="col-sm-4 col-lg-2">
+	            			<div class="widget">
+	            				<h4 class="widget-title">My Account</h4><!-- End .widget-title -->
+
+	            				<ul class="widget-list">
+                                    {% if currentUser %}
+                                    <li><div class="flex-user">
+                                        <p style="color: red;" onclick="logout()">Log out <i class='bx bx-right-arrow-alt'></i></p>
+                                    </div></li>
+                                    {% else %}
+                                    <li><a href="#signin-modal" data-toggle="modal">Login</a></li>
+                                    {% endif %}
+	            					<li><a href="cart.html">View Cart</a></li>
+	            					<li><a href="#">My Wishlist</a></li>
+	            					<li><a href="#">Track My Order</a></li>
+	            					<li><a href="#">Help</a></li>
+	            				</ul><!-- End .widget-list -->
+	            			</div><!-- End .widget -->
+	            		</div><!-- End .col-sm-64 col-lg-3 -->
+	            	</div><!-- End .row -->
+	            </div><!-- End .container -->
+	        </div><!-- End .footer-middle -->
+
+	        <div class="footer-bottom">
+	        	<div class="container">
+	        		<p class="footer-copyright">Copyright © 2019 PlantBooth Store. All Rights Reserved.</p><!-- End .footer-copyright -->
+	        		<ul class="footer-menu">
+	        			<li><a href="#">Terms Of Use</a></li>
+	        			<li><a href="#">Privacy Policy</a></li>
+	        		</ul><!-- End .footer-menu -->
+
+	        		<div class="social-icons social-icons-color">
+	        			<span class="social-label">Social Media</span>
+    					<a href="#" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+    					<a href="#" class="social-icon social-twitter" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+    					<a href="#" class="social-icon social-instagram" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+    					<a href="#" class="social-icon social-youtube" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
+    					<a href="#" class="social-icon social-pinterest" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
+    				</div><!-- End .soial-icons -->
+	        	</div><!-- End .container -->
+	        </div><!-- End .footer-bottom -->
+        </footer><!-- End .footer -->
+    </div><!-- End .page-wrapper -->
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
+
+    <div class="mobile-menu-container mobile-menu-light">
+        <div class="mobile-menu-wrapper">
+            <span class="mobile-menu-close"><i class="icon-close"></i></span>
+            
+            <form action="#" method="get" class="mobile-search">
+                <label for="mobile-search" class="sr-only">Search</label>
+                <input type="search" class="form-control" name="mobile-search" id="mobile-search" placeholder="Search product ..." required>
+                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+            </form>
+
+            <ul class="nav nav-pills-mobile nav-border-anim" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="mobile-menu-link" data-toggle="tab" href="#mobile-menu-tab" role="tab" aria-controls="mobile-menu-tab" aria-selected="true">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="mobile-cats-link" data-toggle="tab" href="#mobile-cats-tab" role="tab" aria-controls="mobile-cats-tab" aria-selected="false">Categories</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="mobile-menu-tab" role="tabpanel" aria-labelledby="mobile-menu-link">
+                    <nav class="mobile-nav">
+                        <ul class="mobile-menu">
+                            <li class="active">
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="/shop">Shop</a>
+                            </li>
+                            <li>
+                                <a href="/product" class="sf-with-ul">Product</a>
+                            </li>
+                            <li>
+                                <a href="#">Pages</a>
+                                <ul>
+                                    <li>
+                                        <a href="/about">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="/contact">Contact</a>
+                                    </li>
+                                    <li><a href="/login">Login</a></li>
+                                    <li><a href="/faq">FAQs</a></li>
+                                    <li><a href="/soon">Coming Soon</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/blog">Blog</a>
+                            </li>
+                            <li>
+                                <a href="elements-list.html">Elements</a>
+                            </li>
+                        </ul>
+                    </nav><!-- End .mobile-nav -->
+                </div><!-- .End .tab-pane -->
+                <div class="tab-pane fade" id="mobile-cats-tab" role="tabpanel" aria-labelledby="mobile-cats-link">
+                    <nav class="mobile-cats-nav">
+                        <ul class="mobile-cats-menu">
+                            <li><a class="mobile-cats-lead" href="#">Daily offers</a></li>
+                            <li><a class="mobile-cats-lead" href="#">Gift Ideas</a></li>
+                            <li><a href="#">Beds</a></li>
+                            <li><a href="#">Lighting</a></li>
+                            <li><a href="#">Sofas & Sleeper sofas</a></li>
+                            <li><a href="#">Storage</a></li>
+                            <li><a href="#">Armchairs & Chaises</a></li>
+                            <li><a href="#">Decoration </a></li>
+                            <li><a href="#">Kitchen Cabinets</a></li>
+                            <li><a href="#">Coffee & Tables</a></li>
+                            <li><a href="#">Outdoor Furniture </a></li>
+                        </ul><!-- End .mobile-cats-menu -->
+                    </nav><!-- End .mobile-cats-nav -->
+                </div><!-- .End .tab-pane -->
+            </div><!-- End .tab-content -->
+
+            <div class="social-icons">
+                <a href="#" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
+                <a href="#" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+            </div><!-- End .social-icons -->
+        </div><!-- End .mobile-menu-wrapper -->
+    </div><!-- End .mobile-menu-container -->
+
+    <!-- Sign in / Register Modal -->
+    <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="icon-close"></i></span>
+                    </button>
+
+                    <div class="form-box">
+                        <div class="form-tab">
+                            <ul class="nav nav-pills nav-fill" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="tab-content-5">
+                                <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
+                                        <div class="form-group">
+                                            <label for="singin-email">Email address *</label>
+                                            <input type="text" class="form-control" id="singin-email" name="singin-email" required>
+                                            <p id="semail"></p>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-group">
+                                            <label for="singin-password">Password *</label>
+                                            <input type="password" class="form-control" id="singin-password" name="singin-password" required>
+                                            <p id="spassword"></p>
+                                            <p><input type="checkbox" name="checkbox" id="checkbox" onclick="showPassword('singin-password')"> Show Password</p>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-footer" onclick="loginUser()">
+                                            <button type="submit" class="btn btn-outline-primary-2">
+                                                <span id="login">LOG IN</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="signin-remember">
+                                                <label class="custom-control-label" for="signin-remember">Remember Me</label>
+                                            </div><!-- End .custom-checkbox -->
+
+                                            <a href="#" class="forgot-link">Forgot Your Password?</a>
+                                        </div><!-- End .form-footer -->
+                                    <div class="form-choice">
+                                        <p class="text-center">or sign in with</p>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login btn-g">
+                                                    <i class="icon-google"></i>
+                                                    Login With Google
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login btn-f">
+                                                    <i class="icon-facebook-f"></i>
+                                                    Login With Facebook
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                        </div><!-- End .row -->
+                                    </div><!-- End .form-choice -->
+                                </div><!-- .End .tab-pane -->
+                                <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                                
+                                        <div class="form-group">
+                                            <label for="register-email">Username *</label>
+                                            <input type="text" class="form-control" id="register-username" name="register-username" required>
+                                            <p id="user"></p>
+                                        </div><!-- End .form-group -->
+                                        <div class="form-group">
+                                            <label for="register-email">Your email address *</label>
+                                            <input type="email" class="form-control" id="register-email" name="register-email" required>
+                                            <p id="email"></p>
+                                        </div><!-- End .form-group -->
+                                        <div class="form-group">
+                                            <label for="register-email">Phone No *</label>
+                                            <input type="number" class="form-control" id="register-phone" name="register-phone" required>
+                                            <p id="phone"></p>
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-group">
+                                            <label for="register-password">Password *</label>
+                                            <input type="password" class="form-control" id="register-password" name="register-password" required>
+                                            <p id="password"></p>
+                                            <p><input type="checkbox" name="checkbox" id="checkbox" onclick="showPassword('register-password')"> Show Password</p>
+                                            
+                                        </div><!-- End .form-group -->
+
+                                        <div class="form-footer" onclick="signup()">
+                                            <button class="btn btn-outline-primary-2">
+                                                <span id="signup">SIGN UP</span>
+                                                <i class="icon-long-arrow-right"></i>
+                                            </button>
+
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="register-policy" required>
+                                                <label class="custom-control-label" for="register-policy">I agree to the <a href="#">privacy policy</a> *</label>
+                                            </div><!-- End .custom-checkbox -->
+                                        </div><!-- End .form-footer -->
+                       
+                                    <div class="form-choice">
+                                        <p class="text-center">or sign in with</p>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login btn-g">
+                                                    <i class="icon-google"></i>
+                                                    Login With Google
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                            <div class="col-sm-6">
+                                                <a href="#" class="btn btn-login  btn-f">
+                                                    <i class="icon-facebook-f"></i>
+                                                    Login With Facebook
+                                                </a>
+                                            </div><!-- End .col-6 -->
+                                        </div><!-- End .row -->
+                                    </div><!-- End .form-choice -->
+                                </div><!-- .End .tab-pane -->
+                            </div><!-- End .tab-content -->
+                        </div><!-- End .form-tab -->
+                    </div><!-- End .form-box -->
+                </div><!-- End .modal-body -->
+            </div><!-- End .modal-content -->
+        </div><!-- End .modal-dialog -->
+    </div><!-- End .modal -->
+    
+    <div class="container newsletter-popup-container mfp-hide" id="newsletter-popup-form">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="row no-gutters bg-white newsletter-popup-content">
+                    <div class="col-xl-3-5col col-lg-7 banner-content-wrap">
+                        <div class="banner-content text-center">
+                            <img src="{% static 'assets/images/logo.jpg' %}" class="logo" alt="logo" width="100%" height="30px" style="opacity: 0.5;">
+                            <h2 class="banner-title">get <span>25<light>%</light></span> off</h2>
+                            <p>Subscribe to the PlantBooth eCommerce newsletter to receive timely updates from your favorite products.</p>
+                            <form action="#">
+                                <div class="input-group input-group-round">
+                                    <input type="email" class="form-control form-control-white" placeholder="Your Email Address" aria-label="Email Adress" required>
+                                    <div class="input-group-append">
+                                        <button class="btn" type="submit"><span>go</span></button>
+                                    </div><!-- .End .input-group-append -->
+                                </div><!-- .End .input-group -->
+                            </form>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="register-policy-2" required>
+                                <label class="custom-control-label" for="register-policy-2">Do not show this popup again</label>
+                            </div><!-- End .custom-checkbox -->
+                        </div>
+                    </div>
+                    <div class="col-xl-2-5col col-lg-5 ">
+                        <img src="{% static 'assets/images/popup/newsletter/img-1.jpg' %}" class="newsletter-img" alt="newsletter">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+ 
+
+ 
+    </script>
+
+
+    {% endblock header %}
+    <!-- Plugins JS File -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.hoverIntent.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/superfish.min.js' %}"></script>
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.plugin.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+    <!-- Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/demos/demo-2.js' %}"></script>
+    <script>
+
+    </script>
+</body>
+
+
+<!-- Plant Booth/index-1.html  22 Nov 2019 09:55:32 GMT -->
+</html>

@@ -1,0 +1,76 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<table>
+   <thead>
+    <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th>Phone</th>
+    <th>Role</th>
+    <th>Update</th>
+    <th>Delete</th>
+    </tr>
+   </thead>
+   <tbody>
+    {% for item in userdata %}
+        <tr id="row">
+            <!-- <td><input type="text" id="username{{item.user_id}}" value="{{item.user_id}}"></td> -->
+            <td><input type="text" id="name{{item.user_id}}" value="{{item.user_name}}"></td>
+            <td><input type="text" id="email{{item.user_id}}" value="{{item.user_email}}"></td>
+            <td><input type="password" id="password{{item.user_id}}" value="{{item.user_password}}"></td>
+            <td><input type="text" id="phone{{item.user_id}}" value="{{item.user_phone}}"></td>
+            <td><input type="text" id="role{{item.user_id}}" value="{{item.role}}"></td>
+            <td><button onclick="UpdateUser('{{item.user_id}}')">Update</button></td>
+            <td><button onclick="Deleteuser('{{item.user_id}}')">Delete</button></td>
+        </tr>
+        {% empty %}
+        <p>No data Available</p>
+        <script>
+            $('table').css('display','none')
+        </script>
+    {% endfor %}
+   </tbody>
+</table>
+<script>
+    function UpdateUser(id) { 
+        let name = $("#name"+id).val();
+        let email = $("#email"+id).val();
+        let password = $("#password"+id).val();
+        let phone = $("#phone"+id).val();
+        let role = $("#role"+id).val();
+        $.ajax({
+            type:"POST",
+            url:"/update_user/",
+            data:{
+                "id":id,
+                "name":name,
+                "email":email,
+                "password":password,
+                "phone":phone,
+                "role":role
+            },
+            success:function(data){
+                if(data){
+                    window.location.replace('/view_user/')
+                }
+            }  
+            
+        })
+     }
+    function Deleteuser(id) {
+        $.ajax({
+            type:"POST",
+            url:"/delete_user/",
+            data:
+            {"id":id},
+            success:function(data){
+                if(data){
+                    window.location.replace('/view_user/')
+                }
+            }
+        })
+      }
+</script>

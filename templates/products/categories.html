@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Category, Subcategory, and Another Subcategory</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .form-container label {
+            margin-bottom: 10px;
+        }
+
+        .form-container input:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Add Category</h1>
+        <form method="post" action="{% url 'add_category' %}">
+            {% csrf_token %}
+            <label for="category_name">Category Name:</label>
+            <input type="text" id="category_name" name="category_name" required>
+
+            <label for="subcategory_name">Subcategory Name (optional):</label>
+            <input type="text" id="subcategory_name" name="subcategory_name" >
+
+            <label for="another_subcategory_name">Another Subcategory Name (optional):</label>
+            <input type="text" id="another_subcategory_name" name="another_subcategory_name" >
+
+            <button type="submit">Add</button>
+        </form>
+    </div>
+
+</body>
+</html>

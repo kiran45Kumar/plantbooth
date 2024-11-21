@@ -1,0 +1,286 @@
+{% load static %}
+<head>
+    <title>{% block title %}
+        PlantBooth | Signup
+    {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/f3c81801f8.js" crossorigin="anonymous"></script>
+</head>
+<style>
+.signup-section img{
+    height: 728px;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+    opacity: 0.6;
+}
+.signup{
+    position: absolute;
+   background: white ;
+    border-radius: 20px;
+    box-shadow: 0px 1px 1px 1px linear-gradient(to bottom, rgb(151, 226, 255), #fff);;
+    height:590px;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-color: linear-gradient(to bottom, rgb(151, 226, 255), #fff);;
+}
+.signup-bg-blue{
+    background: linear-gradient(to bottom, rgb(151, 226, 255), #fff);
+    height: 150px;
+    width: 100%;
+    border-radius: 20px;
+    border-color: linear-gradient(to bottom, rgb(151, 226, 255), #fff);;
+}
+.signup-bg-blue span{
+    padding: 20px;
+    background: white;
+    border-radius: 16px;
+    font-size: 28px;
+    margin: 15px;
+}
+.signup-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signup-bg-blue h4{
+    text-align: center;
+    font-size: 25px ;
+    font-weight: 600;
+}
+.signup-bg-blue p{
+    text-align: center;
+    font-size: 15px;
+    color: #555;
+    font-weight: 500;
+    margin: 10px;
+}
+.signup-form{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: start;
+    background: #f1f1f1;;
+    margin: 10px 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.signup-form input{
+    border: none;
+    outline: none;
+    background: #f1f1f1;
+}
+.signup-form i{
+    font-size: 18px;
+    color: #555;
+}
+.signup-form-button{
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signup-form-button button{
+    width: 100%;
+    margin: 10px 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: #000;
+    color: white;
+    cursor: pointer;
+}
+.space-between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.space-between i{
+    font-size: 15px;
+    cursor: pointer;
+}
+.signup-password{
+    display: flex;
+    align-items: center;    
+    gap: 10px;
+}
+.signup-forms{
+    margin: 10px 0;
+}
+.forgotpassword p{
+    text-align:end;
+    margin: 0 20px ;
+    cursor: pointer;
+}
+.forgotpassword p:hover{
+    color: #dc3545;
+    transition: all 0.4s ease-in;
+}
+.other-signin-options{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.other-signin-options div{
+    transform: rotate(-90deg);
+}
+.signin{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.signin div img{
+    height: 20px;
+    width: 20px;
+    opacity: 1;
+    padding: 10px 35px;
+    box-shadow: 0px 1px 2px 1px silver;
+    border-radius: 10px;
+}
+.signin div{
+    cursor: pointer;
+}
+</style>
+{% block signup %}
+
+<body>
+    <div class="signup-section">
+        <img src="{% static 'images/bg-plantbooth.jpg'%}" alt="">
+        <div class="signup">
+            <div class="signup-bg-blue">
+               <div class="signup-icon"> <span><i class='bx bx-log-in'></i></span></div>
+               <h4 id="message">Sign up with Email</h4>
+               <p>Become a Plant Enthusiast Today – Join the PlantBooth Family!</p>
+               <div class="signup-forms">
+                <div class="signup-form" id="input1">
+                    <i class='bx bx-user-circle' ></i>
+                    <input type="text" id="username" placeholder="Username">
+                    <p></p>
+                </div>
+                <div class="signup-form">
+                    <i class='bx bx-envelope' ></i>
+                    <input type="email" id="email" placeholder="Email">
+                    <p></p>
+                </div>
+                <div class="signup-form">
+                    <i class='bx bx-phone-call' ></i>
+                    <input type="number" id="mobile" placeholder="Phone">
+                    <p></p>
+                </div>
+                <div class="signup-form space-between">
+                   <div class="signup-password">
+                    <i class='bx bx-lock-alt' ></i>
+                    <input type="password" id="password" placeholder="Password">
+                   </div>
+                    <i class="fa-regular fa-eye" id="eye-icon" onclick="showIcon()"></i>
+                </div>
+                <div class="forgotpassword">
+                    <p>Forgot Password</p>
+                </div>
+                <div class="signup-form-button">
+                    <button onclick="signup()">Get Started</button>
+                </div>
+                <div class="other-signin-options">
+                    <div>|</div>
+                    <p>or sign up with</p>
+                    <div>|</div>
+                    
+                </div>
+                <div class="signin">
+                    <div><img src="{% static 'images/search.png' %}" alt="google-logo"></div>
+                    <div><img src="{% static 'images/facebook.png' %}" alt="google-logo"></div>
+                    <div><img src="{% static 'images/apple-logo.png' %}" alt="apple-logo" height="20px"></div>
+                </div>
+                <p style="margin: 10px;">Already have an account?<a href="/login">  Login</a></p>
+            </div>
+            </div>
+            
+        </div>
+    </div>
+        
+{% endblock signup %}
+</body>
+
+<script>
+    
+    function signup() {
+        let username = $("#username").val();
+        let email = $("#email").val();
+        let mobile = $("#mobile").val();
+        let password = $("#password").val();
+if(!username){
+    $("#message").text('Please Enter Your Name').css('color','#dc3545');
+    $("#input1").css('border-color','#dc3545');
+    return;
+}
+else if(!email){
+    $("#message").text('Please Enter Your Email').css('color','#dc3545');
+    $("#input2").css('border-color','#dc3545');
+    return;
+}
+else if(!mobile ){
+    $("#message").text('Please Enter Your Mobile').css('color','#dc3545');
+    $("#input3").css('border-color','#dc3545');
+    return;
+}
+else if(mobile.length !== 10 ){
+    $("#message").text('invalid mobileno').css('color','#dc3545');
+    $("#input3").css('border-color','#dc3545');
+    return;
+}
+else if(!password){
+    $("#message").text('Please Enter Your Password').css('color','#dc3545');
+    $("#input4").css('border-color','#dc3545');
+    return;
+}
+        $.ajax({
+            type:"POST",
+            url:"/create_user/",
+            data:{
+                "username":username,
+                "email":email,
+                "password":password,
+                "mobile":mobile,
+            },
+            success:function(data){
+                if(data['status'] == 'pass'){
+                    $(".login-input-icon").css('border-color','#198754')
+                    $("#message").text('Signup Successful').css({'display':'block','color':'#198754','transition':'all 0.2s ease-in'})
+                    setTimeout(() => {
+                    window.location.replace('/');
+                }, 2000);
+                }
+                else if(data['status'] == 'fail'){
+                    $("#message").text(data['message'])
+                    $(".login-input-icon").css('border-color','#dc3545');
+                }
+            },
+            error:function(error){
+                if(error){
+                    $("#message").text(error.message)
+                }
+            }
+        })
+
+      }
+      function showIcon() { 
+  let password = document.getElementById("password");
+  let eye =  document.getElementById("eye-icon");
+ if(eye.classList.contains('fa-eye')){
+    eye.classList.remove('fa-eye')
+    eye.classList.add('fa-eye-slash')
+    password.type = 'text'
+ }
+ else if(eye.classList.contains('fa-eye-slash')){
+    eye.classList.remove('fa-eye-slash')
+    eye.classList.add('fa-eye')
+    password.type = 'password'
+ }
+ }
+</script>

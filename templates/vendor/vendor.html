@@ -1,0 +1,162 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<title>Create Vendor Account | PLant Booth</title>
+ <style>
+    #danger-success2{
+        margin-top: 10%;
+        font-size: 50px;
+    }
+ </style>
+<section>
+    {% if vendor_exists %}
+<div class="seller-section">
+    <script>
+        window.location.href = '/vendor_dashboard'
+    </script>
+    <!-- <h5 id="danger-success">{{ message }} <a href="/vendor_dashboard">Go to Dashboard <i class='bx bx-right-arrow-alt'></i></a></h5> -->
+    
+</div>
+{% else %}
+<div class="seller-section">
+    <h1 id="welcome-title" style="opacity: 0; transition: opacity 0.5s ease;">Welcome to Your Selling Journey!</h1>
+    <p>Are you passionate about plants and ready to share your green thumb with the world? <br>
+        Creating a seller account with us is quick and easy! Here’s how you can get started</p>
+        <h5 id="danger-success">{{ message }}</h5>
+            <div class="seller-forms">
+                <div class="seller-form-inputs">
+                    <div class="seller-inputs" style="display: none;">
+                        <label for="user_id"></label>
+                        <input type="text" id="user_id" value="{{ currentUserId }}">
+                    </div>
+                    <div class="seller-inputs">
+                        <label for="vendor_name">Name</label>
+                        <input type="text" id="vendor_name" placeholder="Enter Your Name">
+                    </div>
+                    <div class="seller-inputs">
+                        <label for="vendor_email">Email</label>
+                        <input type="text" id="vendor_email" placeholder="Enter Your Email"> 
+                    </div>
+                    <div class="seller-inputs">
+                        <label for="vendor_phone">Phone</label>
+                        <input type="text" id="vendor_phone" placeholder="Enter your Mobile No">
+                    </div>
+                    <div class="seller-inputs">
+                        <label for="vendor_city">City</label>
+                        <input type="text" id="vendor_city" placeholder="Enter your City">
+                    </div>
+                    <div class="seller-inputs">
+                        <label for="vendor_state">State</label>
+                        <input type="text" id="vendor_state" placeholder="Enter your State">
+                    </div>
+                    <div class="seller-inputs">
+                        <label for="vendor_country">Country</label>
+                        <input type="text" id="vendor_country" placeholder="Enter Your Country">
+                    </div>
+                    <div class="seller-inputs">
+                        <label for="vendor_img">Profile Pic</label>
+                        <input type="file" id="vendor_img">
+                    </div>
+                    <div class="seller-inputs" style="visibility: hidden;">
+                        <label for="vendor_img">Profile Pic</label>
+                        <input type="file" id="vendor_img">
+                    </div>
+                    <div class="seller-inputs">
+                        <button type="submit" onclick="CreateVendor()">Create</button>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+
+<script>
+    const titles = [
+        "Welcome to Your Selling Journey!",
+        "Share Your Passion for Plants!",
+        "Join Our Vibrant Seller Community!",
+        "Unlock Your Selling Potential!"
+    ];
+
+    let titleIndex = 0;
+
+    function changeTitle() {
+        const titleElement = document.getElementById('welcome-title');
+        titleElement.style.opacity = 0; 
+        setTimeout(() => {
+            titleIndex = (titleIndex + 1) % titles.length; 
+            titleElement.innerText = titles[titleIndex]; 
+            titleElement.style.opacity = 1; 
+        }, 500); 
+    }
+    setInterval(changeTitle, 3000);
+
+    function CreateVendor() { 
+        let user_id = $("#user_id").val();
+        let vendor_name = $("#vendor_name").val();
+        let vendor_email = $("#vendor_email").val();
+        let vendor_phone = $("#vendor_phone").val();
+        let vendor_city = $("#vendor_city").val();
+        let vendor_state = $("#vendor_state").val();
+        let vendor_country = $("#vendor_country").val();
+        let vendor_img = $("#vendor_img")[0].files[0];
+        let seller = $("#seller").val();
+       
+        if(!vendor_name) {
+            displayMessage("Enter Your Name", '#dc3545');
+            return;
+        } else if(!vendor_email) {
+            displayMessage("Enter Your Email", '#dc3545');
+            return;
+        } else if(!vendor_phone) {
+            displayMessage("Enter Your Phone", '#dc3545');
+            return;
+        } else if(!vendor_city) {
+            displayMessage("Enter Your City", '#dc3545');
+            return;
+        } else if(!vendor_state) {
+            displayMessage("Enter Your State", '#dc3545');
+            return;
+        } else if(!vendor_country) {
+            displayMessage("Enter Your Country", '#dc3545');
+            return;
+        } else if(!vendor_img) {
+            displayMessage("Upload Your Profile Picture", '#dc3545');
+            return;
+        }
+        let formData = new FormData();
+        formData.append("user_id", user_id);
+        formData.append("vendor_name", vendor_name);
+        formData.append("vendor_email", vendor_email);
+        formData.append("vendor_phone", vendor_phone);
+        formData.append("vendor_city", vendor_city);
+        formData.append("vendor_state", vendor_state);
+        formData.append("vendor_country", vendor_country);
+        formData.append("vendor_profile", vendor_img);
+        formData.append("seller", seller);
+        $.ajax({
+            type: "POST",
+            url: "/create_vendor/",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                if(data['status'] == 'pass') {
+                    displayMessage("Account Created", '#28a475');
+                    window.location.href = '/vendor_dashboard'
+                } else {
+                    displayMessage(data['message'], '#dc3545');
+                }
+            },
+            error: function(xhr, status, error) {
+                alert("Please fill all the fields");
+            }
+        });
+    }
+    function displayMessage(message, color) {
+        const msgElement = $("#danger-success");
+        msgElement.text(message).css('color', color);
+    }
+    changeTitle();
+</script>

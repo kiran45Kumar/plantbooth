@@ -1,0 +1,13 @@
+{% for vendor in vendors %}
+   <p>{{vendor.vendor_name}}</p> 
+   <p>{{vendor.vendor_email}}</p> 
+   <p>{{vendor.vendor_phone}}</p> 
+   <p>{{vendor.vendor_city}}</p> 
+   <p>{{vendor.vendor_state}}</p> 
+   <p>{{vendor.vendor_country}}</p> 
+    {% if vendor.vendor_profile %}
+    <img src="{{vendor.vendor_profile.url}}" alt="" height="100px" width="100px" style="border-radius: 50%;object-fit: cover;"> 
+    {% else %}
+    <img src="{% static 'images/profilePic.jpg' %}" alt="" height="100px" width="100px" style="border-radius: 50%;object-fit: cover;"> 
+    {% endif %}
+{% endfor %}

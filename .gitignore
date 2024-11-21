@@ -1,0 +1,33 @@
+# Python bytecode
+*.pyc
+__pycache__/
+# Node.js dependencies
+node_modules/
+
+# Virtual environments
+venv/
+env/
+
+# Environment variables
+.env
+
+# Django files
+db.sqlite3
+/staticfiles/
+media/
+
+# Migrations (optional)
+*/migrations/*
+!*/migrations/__init__.py
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE-specific files
+.vscode/
+.idea/

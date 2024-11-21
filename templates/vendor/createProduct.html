@@ -1,0 +1,265 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Create Your Product</title>
+</head>
+<style>
+    textarea:focus {
+        outline: none;
+        
+    }
+    textarea{
+        border-radius: 10px;
+    }
+    select{
+        border: 1px solid silver;
+        border-radius: 5px;
+        background: #f1f1f1
+    }
+    select:focus{
+        outline: none;
+    }
+</style>
+<body>
+<section>
+    <div class="product-navbar-section">
+        <div class="product-navbar-logo">
+            <h4>Create Your Product</h4>
+        </div>
+        <div class="product-links">
+            <li onclick="dashboard()"><i class='bx bxs-dashboard'></i> Dashboard</li>
+            <li><i class='bx bx-user-circle' style='color:#ffffff' ></i> Customers</li>
+            <li onclick="ViewProduct()"><i class='bx bx-package' style='color:#ffffff' ></i> Products</li>
+            <li><i class='bx bxs-shopping-bag'></i> Orders</li>
+            <li onclick="viewVendor()"><i class='bx bxs-cog' style='color:#ffffff' ></i> My Profile</li>
+        </div>
+        <div class="product-icons">
+            <i class='bx bxs-bell'></i>
+            <div class="user-img">
+                {% for vendor in vendors %}
+                    <img src="{{ vendor.vendor_profile.url }}" alt="">
+                    <div class="user-text">
+                        <h3>{{ vendor.vendor_name }}</h3>
+                        <p>{{ vendor.vendor_email }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="product-create-section">
+        <div class="product-left">
+            <div class="product-form">
+                <h1>General Information</h1>
+                <div class="product-inputs">
+                    <label for="">Name</label>
+                    <input type="text" id="name" class="input-description-1" placeholder="Product Name">
+                    <input type="hidden" id="user_id" value="{{ currentUserId }}">
+                    {% for vendor in vendors %}
+                        <input type="hidden" id="vendor_id" value="{{ vendor.vendor_id }}">
+                    {% endfor %}
+                </div>
+                <div class="product-inputs">
+                    <label for="desc">Description</label>
+                    <textarea  class="input-description-2" style="border: 1px solid silver;background: #f1f1f1;outline: none;" id="desc" placeholder="Product Description"></textarea>
+                </div>
+            </div>
+            <div class="product-form">
+                <h1>Pricing</h1>
+                <div class="product-flex">
+                    <div class="product-inputs">
+                        <label for="price">Price</label>
+                        <input type="text" id="price" class="input-description-1" placeholder="20">
+                    </div>
+                    <div class="product-inputs">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" id="quantity" class="input-description-1" placeholder="eg: 50">
+                    </div>
+                    <div class="product-inputs">
+                        <label for="barcode">Barcode</label>
+                        <input type="number" id="barcode" class="input-description-1" placeholder="Product Barcode">
+                    </div>
+                </div>
+            </div>
+            <div class="product-form">
+                <h1>Product Media</h1>
+                <div class="product-inputs">
+                    <label for="">Product's Photo</label>
+                    <input type="file" id="product_img" class="input-description-1">
+                </div>
+            </div>
+        </div>
+        <div class="product-right">
+            <div class="product-form">
+                <h1>Benifits and Care Tips</h1>
+                <div class="product-inputs">
+                    <label for="">Benefits </label>
+                    <textarea  class="input-description-2" style="border: 1px solid silver;background: #f1f1f1;outline: none;" id="benefit" placeholder="Product Description"></textarea>
+                </div>
+                <div class="product-inputs">
+                    <label for="">Caretips </label>
+                    <textarea  class="input-description-2" style="border: 1px solid silver;background: #f1f1f1;outline: none;" id="caretips" placeholder="Product Description"></textarea>
+                </div>
+            </div>
+            
+            <div class="product-form">
+                <div class="product-inputs">
+                    <label for="product_category">Product Category</label>
+                    <select id="product_category" class="input-description-1" onchange="showSubcategory()">
+                        <option value="">Select a category</option>
+                        {% for scategory in categories %}
+                            <option value="{{ scategory.id }}">{{ scategory.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="product-inputs" id="subcategory-container" style="display: none;">
+                    <label for="product_subcategory">Subcategory (leave empty if there is none)</label>
+                    <select id="product_subcategory" class="input-description-1" onchange="showAnotherSubcategory()">
+                        <option value="">Select a subcategory</option>
+
+                    </select>
+                </div>
+                
+                <div class="product-inputs" id="another-subcategory-container" style="display: none;">
+                    <label for="product_another_subcategory">Another Subcategory(leave empty if there is none)</label>
+                    <select id="product_another_subcategory" class="input-description-1">
+                        <option value="">Select another subcategory</option>
+                    </select>
+                </div>
+            </div>
+            
+
+            <div class="product-button">
+                <button onclick="createProduct()">Create</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function createProduct() {
+        let user_id = $("#user_id").val();
+        let vendor_id = $("#vendor_id").val();
+        let name = $("#name").val();
+        let desc = $("#desc").val();
+        let price = $("#price").val();
+        let quantity = $("#quantity").val();
+        let barcode = $("#barcode").val();
+        let product_img = $("#product_img")[0].files[0];
+        let product_category = $("#product_category").val();
+        let product_subcategory = $("#product_subcategory").val();
+        let product_another_subcategory = $("#product_another_subcategory").val();
+        let benefit = $("#benefit").val();
+        let caretips = $("#caretips").val();
+
+        let formData = new FormData();
+        formData.append("user_id", user_id);
+        formData.append("vendor_id", vendor_id);
+        formData.append("name", name);
+        formData.append("desc", desc);
+        formData.append("price", price);
+        formData.append("quantity", quantity);
+        formData.append("barcode", barcode);
+        formData.append("benefit", benefit);
+        formData.append("caretips", caretips);
+        formData.append("product_img", product_img);
+        formData.append("product_category", product_category);
+        formData.append("product_subcategory", product_subcategory);
+        formData.append("product_ano_subcategory", product_another_subcategory);
+        
+        $.ajax({
+            type: "POST",
+            url: "/create_product/",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                if (data['status'] == 'pass') {
+                    alert('Success');
+                    window.location.href = '/view_product/';
+                } else {
+                    alert('Failed');
+                }
+            },
+            error: function(xhr, status, error) {
+                alert("Failed to add");
+            }
+        });
+    }
+
+    function showSubcategory() {
+    let categoryId = $("#product_category").val();
+    let subcategoryContainer = $("#subcategory-container");
+    let subcategorySelect = $("#product_subcategory");
+
+    subcategorySelect.empty().append('<option value="">Select a subcategory</option>');
+    $("#another-subcategory-container").hide();
+
+    if (categoryId) {
+        subcategoryContainer.show();
+
+        $.ajax({
+            type: "GET",
+            url: "/get_subcategories/",
+            data: { category_id: categoryId },
+            success: function(data) {
+                data.forEach(function(subcategory) {
+                    subcategorySelect.append('<option value="' + subcategory.id + '">' + subcategory.name + '</option>');
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error("Failed to fetch subcategories");
+            }
+        });
+    } else {
+        subcategoryContainer.hide();
+    }
+}
+
+function showAnotherSubcategory() {
+    let subcategoryId = $("#product_subcategory").val();
+    let anotherSubcategoryContainer = $("#another-subcategory-container");
+    let anotherSubcategorySelect = $("#product_another_subcategory");
+
+    anotherSubcategorySelect.empty().append('<option value="">Select another subcategory</option>');
+
+    if (subcategoryId) {
+        anotherSubcategoryContainer.show();
+
+        $.ajax({
+            type: "GET",
+            url: "/get_another_subcategories/",
+            data: { subcategory_id: subcategoryId },
+            success: function(data) {
+                data.forEach(function(anotherSubcategory) {
+                    anotherSubcategorySelect.append('<option value="' + anotherSubcategory.id + '">' + anotherSubcategory.name + '</option>');
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error("Failed to fetch another subcategories");
+            }
+        });
+    } else {
+        anotherSubcategoryContainer.hide();
+    }
+}
+
+    function dashboard() { 
+        window.location.href = "/vendor_dashboard"
+     }
+    function ViewProduct() { 
+        window.location.href = "/view_product"
+     }
+    function viewVendor() { 
+        window.location.href = "/view_vendor"
+     }
+</script>
+</body>
+</html>

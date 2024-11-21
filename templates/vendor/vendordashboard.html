@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% for vendor in vendors %}
+    <title>{{vendor.vendor_name}}</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+
+    }
+</style>
+<body>
+    <div class="seller-dashboard-section">
+        <div class="seller-left">
+                <h1>PlantBooth</h1>
+            <div class="seller-sidebar-section">
+                <ul>
+                    <li class="bg-light"> <div class="flex-icons">
+                        <i class='bx bxs-dashboard'  style="color: white;"></i> 
+                        <p>Dashboard</p>
+                    </div> </li>
+                    <li class="links"><div class="flex-icons ">
+                        <i class='bx bxs-purchase-tag' ></i> <p id="product-text" onclick="toggleProduct()">Products </p>  
+                        <i class="bx bx-chevron-down" id="chevron"></i>      
+                    </div></li>
+                    <div class="products product-none" id="product">
+                        <p><div class="product-icon" onclick="addNew()">
+                            <i class='bx bx-plus bx-burst' ></i>  Create Fresh
+                        </div></p>
+                        <p><div class="product-icon">
+                            <i class='bx bx-edit-alt bx-flashing' ></i>   Edit Product
+                        </div></p>
+                        <p><div class="product-icon">
+                            <i class='bx bxs-trash bx-tada' ></i> Remove Product
+                        </div></p>
+                        <p ><div class="product-icon" onclick="viewProduct()">
+                            <i class='bx bx-low-vision bx-tada' ></i> View Product
+                        </div></p>
+                        <p ><div class="product-icon" onclick="addCat()">
+                            <i class='bx bx-low-vision bx-tada' ></i> Add Categories
+                        </div></p>
+                    </div>
+                    <li><div class="flex-icons">
+                        <i class='bx bxs-user-voice' ></i> 
+                        <p onclick="sellerProfile()"> Seller Profile</p>
+                    </div> </li>
+                    <li><div class="flex-icons">
+                        <i class='bx bxs-user-circle' ></i>
+                        <p>Customers</p>
+                    </div> </li>
+                    <li><div class="flex-icons">
+                        <i class='bx bxs-shopping-bag' ></i>
+                        <p>Orders</p>
+                    </div> </li>
+                </ul>
+                <hr>
+                <ul>
+                    <h2>Account</h2>
+                    <li class=""> <div class="flex-icons">
+                        <i class='bx bx-log-in-circle'></i>
+                        <p onclick="window.location.replace('/')">Logout</p>
+                    </div> </li>
+                    <li><div class="flex-icons">
+                        <i class='bx bx-cog' ></i>
+                        <p>Settings </p>
+                    </div></li>
+                <div style="visibility: hidden;"> hello</div>
+                <div style="visibility: hidden;"> hello</div>
+                <div style="visibility: hidden;"> hello</div>
+                <div style="visibility: hidden;"> hello</div>
+                    <!-- <li><div class="flex-icons">
+                        <i class='bx bxs-user-voice' ></i> 
+                        <p>Seller Profile</p>
+                    </div> </li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="seller-right">
+            <div class="seller-nav">
+                <div class="seller-search">
+                    <input type="search" name="" id="search" placeholder="I'm Look'n For...">
+                    <i class='bx bx-search'></i>
+                </div>
+                <div class="seller-icons">
+                    <div class="seller-add-new-button">
+                        <button onclick="addNew()">+ Add New</button>
+                    </div>
+                    <div class="bg-gray"> <i class='bx bxs-bell-ring'></i></div>
+                    <div class=""> <i class='bx bxs-sun' style="color: blue;cursor: pointer;" ></i></div>
+                   <div class="seller-profile">
+                    <img src="{{vendor.vendor_profile.url}}" alt="">
+                    <h1>{{vendor.vendor_name}}</h1>
+                    <i class='bx bx-chevron-down'></i>
+                   </div>
+                </div>
+            </div>
+
+            <section>
+                <div class="main-content-section">
+                    <div class="flex-containers">
+                        <div class="flex-box">
+                            <div class="icon-text">
+                               <div class="bg-blue"> <i class='bx bx-user' ></i></div>
+                                <p>+ 63% &uparrow;</p>
+                            </div>
+                            <div class="flex-column">
+                                <h1>15K</h1>
+                                <p>New Customers</p>
+                                <div class="flex-row">
+                                    <p>This Month</p>
+                                    <a href="#">View Customers</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-box">
+                            <div class="icon-text">
+                               <div class="bg-blue bg-color-2"> <i class='bx bxs-purchase-tag' ></i></div>
+                                <p>+ 50% &uparrow;</p>
+                            </div>
+                            <div class="flex-column">
+                                <h1>80K</h1>
+                                <p>Total Sales</p>
+                                <div class="flex-row">
+                                    <p>Last Month</p>
+                                    <a href="#">View Report</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-box">
+                            <div class="icon-text">
+                               <div class="bg-blue bg-color"> <i class='bx bx-money-withdraw' ></i></div>
+                                <p>+ 73% &uparrow;</p>
+                            </div>
+                            <div class="flex-column">
+                                <h1>2Cr</h1>
+                                <p>Total Revenue</p>
+                                <div class="flex-row">
+                                    <p>This Year</p>
+                                    <a href="#">View Customers</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="new">
+                        <p></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function addNew() { 
+        window.location.href = '/create_product_page'
+     }
+    function viewProduct() { 
+        window.location.href = '/view_product'
+     }
+     function toggleProduct() { 
+        $("#product").toggle("product-none");
+      }
+      $(document).ready(function(){
+    $(".links").hover(function(){
+        $(this).find(".bx-chevron-down").css('transform', 'rotate(180deg)');
+    }, function(){
+        $(this).find(".bx-chevron-down").css('transform', 'rotate(0deg)');
+    });
+});
+function addCat(){
+    window.location.href = '/add_category/'
+}
+function sellerProfile() { 
+    window.location.replace("/view_vendor")
+ }
+</script>
+{% endfor %}

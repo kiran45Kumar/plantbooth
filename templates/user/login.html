@@ -1,0 +1,102 @@
+{% extends 'user/signup.html' %}
+{% block signup %}
+{% load static %}
+<title>{% block title %}PlantBooth | Login{% endblock  %}</title>
+<head>
+    <style>
+        .login{
+            height: 465px;
+        }
+    </style>
+</head>
+    <body>
+        <div class="signup-section ">
+            <img src="{% static 'images/bg-plantbooth.jpg'%}" alt="">
+            <div class="signup login">
+                <div class="signup-bg-blue">
+                   <div class="signup-icon"> <span><i class='bx bx-log-in'></i></span></div>
+                   <h4 id="message">Sign in with Email</h4>
+                   <p>Sign In to Grow Your Collection—Breathe Life Into Every Corner!</p>
+                   <div class="signup-forms">
+                    <div class="signup-form">
+                        <i class='bx bx-envelope' ></i>
+                        <input type="email" id="email" placeholder="Email">
+                        <p></p>
+                    </div>
+                    <div class="signup-form space-between">
+                       <div class="signup-password">
+                        <i class='bx bx-lock-alt' ></i>
+                        <input type="password" id="password" placeholder="Password">
+                       </div>
+                        <i class="fa-regular fa-eye" id="eye-icon" onclick="showIcon()"></i>
+                    </div>
+                    <div class="signup-form-button">
+                        <button onclick="loginUser()">Login</button>
+                    </div>
+                    <div class="other-signin-options">
+                        <div>|</div>
+                        <p>or sign in with</p>
+                        <div>|</div>
+                        
+                    </div>
+                    <div class="signin">
+                        <div><img src="{% static 'images/search.png' %}" alt="google-logo"></div>
+                        <div><img src="{% static 'images/facebook.png' %}" alt="google-logo"></div>
+                        <div><img src="{% static 'images/apple-logo.png' %}" alt="apple-logo" height="20px"></div>
+                    </div>
+                    <p>Don't have an account?<a href="/signup">  Signup</a></p>
+                </div>
+                </div>
+                
+            </div>
+        </div>
+    </body>
+
+<script>
+       function loginUser() {
+    let email = $("#email").val();
+    let password = $("#password").val();
+    $.ajax({
+        type: "POST",
+        url: "/login_user/",
+        data: {
+            "email": email,
+            "password": password,
+        },
+        success: function(data) {
+            if (data["status"] === "pass") {
+                // alert("Success")
+                $(".login-input-icon").css('border-color','#198754')
+                $("#message").text('Signin Successful').css({'display':'block','color':'#198754','transition':'all 0.2s ease-in'})
+                setTimeout(() => {
+                    window.location.replace('/');
+                }, 2000);
+            } else if (data["status"] === "fail") {
+                $("#message").html(data['message']+"Please <a style = 'text-decoration:none;color:#dc3545' href = '/signup'>Signup</a>").css('font-size','16px').css({'font-size':'16px',"color":"#dc3545"})
+                $(".login-input-icon").css('border-color','#dc3545');
+                
+            } else if (data["status"] === "false") {
+                $("#message").text("Incorrect email or password.").css({'font-size':'16px',"color":"#dc3545"});
+                $(".login-input-icon").css('border-color','#dc3545');
+            }
+        }
+    });
+}
+function showIcon() { 
+  let password = document.getElementById("password");
+  let eye =  document.getElementById("eye-icon");
+ if(eye.classList.contains('fa-eye')){
+    eye.classList.remove('fa-eye')
+    eye.classList.add('fa-eye-slash')
+    eye.style.cursor = 'pointer'
+    password.type = 'password'
+ }
+ else if(eye.classList.contains('fa-eye-slash')){
+    eye.classList.remove('fa-eye-slash')
+    eye.classList.add('fa-eye')
+    password.type = 'text'
+ }
+ }
+
+</script>
+{% endblock signup %}

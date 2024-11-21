@@ -1,0 +1,343 @@
+{% extends 'products/category.html' %}
+{% block navbar %}
+{% load static %}
+<main class="main">
+    <div class="page-header html-center" style="background-image: url('{% static "assets/images/page-header-bg.jpg" %}')">
+        <div class="container">
+            <h1 class="page-title">Checkout<span>Shop</span></h1>
+        </div><!-- End .container -->
+    </div><!-- End .page-header -->
+    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/shop">Shop</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+            </ol>
+        </div><!-- End .container -->
+    </nav><!-- End .breadcrumb-nav -->
+
+    <div class="page-content">
+        <div class="checkout">
+            <div class="container">
+                <div class="checkout-discount">
+                    <form action="#">
+                        <input type="html" class="form-control" required id="checkout-discount-input">
+                        <label for="checkout-discount-input" class="html-truncate">Have a coupon? <span>Click here to enter your code</span></label>
+                    </form>
+                </div><!-- End .checkout-discount -->
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>First Name *</label>
+                                        <input type="html" class="form-control" id="first_name" required>
+                                        <p id="fname"></p>
+                                    </div><!-- End .col-sm-6 -->
+                                    <div class="col-sm-6">
+                                        <label>Last Name *</label>
+                                        <input type="html" class="form-control" id="last_name" required>
+                                        <p id="lname"></p>
+                                    </div><!-- End .col-sm-6 -->
+                                </div><!-- End .row -->
+                                <label>Country *</label>
+                                <input type="html" class="form-control" id="country_name" required>
+                                <p id="coname"></p>
+
+                                <label>Street address *</label>
+                                <input type="html" class="form-control" id="address" placeholder="House number and Street name" required>
+                                <input type="html" class="form-control" id="landmark" placeholder="Appartments, suite, unit etc ..." required>
+                                <p id="street"></p>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Town / City *</label>
+                                        <input type="html" class="form-control" id="city" required>
+                                        <p id="ucity"></p>
+                                    </div><!-- End .col-sm-6 -->
+
+                                    <div class="col-sm-6">
+                                        <label>State / County *</label>
+                                        <input type="html" class="form-control" id="state" required>
+                                        <p id="ustate"></p>
+                                    </div><!-- End .col-sm-6 -->
+                                </div><!-- End .row -->
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label>Postcode / ZIP *</label>
+                                        <input type="html" class="form-control" id="pincode" required>
+                                        <p id="upincode"></p>
+                                    </div><!-- End .col-sm-6 -->
+
+                                    <div class="col-sm-6">
+                                        <label>Phone *</label>
+                                        <input type="number" class="form-control" id="phone" required>
+                                        <p id="uphone"></p>
+                                    </div><!-- End .col-sm-6 -->
+
+                                    <div class="col-sm-6">
+                                        <label>Alternate Phone *</label>
+                                        <input type="number" class="form-control" id="aphone" required>
+                                        <p id="uaphone"></p>
+                                    </div><!-- End .col-sm-6 -->
+
+                                    <div class="col-sm-6" hidden>
+                                        <label>Alternate Phone *</label>
+                                      <input type="number" class="form-control" id="user_id" value="{{currentUserId}}" required>
+                                    </div><!-- End .col-sm-6 -->
+                                    
+                                    <div class="col-sm-6" hidden>
+                                        <label>Alternate Phone *</label>
+                                        {% for item in cart_items %}
+                                        <input type="html" class="form-control" id="product_id" value="{{item.product.product_id}}" required>
+                                        {% endfor %}
+                                    </div><!-- End .col-sm-6 -->
+                                </div><!-- End .row -->
+
+                                <label>Email address *</label>
+                                {% for user in users %}
+                                <input type="email" class="form-control" id="email" value="{{user.user_email}}" readonly required>
+                                {% endfor %}
+
+                                <label>Order notes (optional)</label>
+                                <textarea class="form-control" id="order-notes" cols="30" rows="4" placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
+                        </div><!-- End .col-lg-9 -->
+                        <aside class="col-lg-3">
+                            <div class="summary">
+                                <h3 class="summary-title">Your Order</h3><!-- End .summary-title -->
+
+                                <table class="table table-summary">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="#">Beige knitted elastic runner shoes</a></td>
+                                            <td>$84.00</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><a href="#">Blue utility pinafore denimdress</a></td>
+                                            <td>$76,00</td>
+                                        </tr>
+                                        <tr class="summary-subtotal">
+                                            <td>Subtotal:</td>
+                                            <td>$160.00</td>
+                                        </tr><!-- End .summary-subtotal -->
+                                        <tr>
+                                            <td>Shipping:</td>
+                                            <td>Free shipping</td>
+                                        </tr>
+                                        <tr class="summary-total">
+                                            <td>Total:</td>
+                                            <td>$160.00</td>
+                                        </tr><!-- End .summary-total -->
+                                    </tbody>
+                                </table><!-- End .table table-summary -->
+
+                                <div class="accordion-summary" id="accordion-payment">
+                                    <div class="card">
+                                        <div class="card-header" id="heading-1">
+                                            <h2 class="card-title">
+                                                <a role="button" data-toggle="collapse" href="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
+                                                    Direct bank transfer
+                                                </a>
+                                            </h2>
+                                        </div><!-- End .card-header -->
+                                        <div id="collapse-1" class="collapse show" aria-labelledby="heading-1" data-parent="#accordion-payment">
+                                            <div class="card-body">
+                                                Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
+                                            </div><!-- End .card-body -->
+                                        </div><!-- End .collapse -->
+                                    </div><!-- End .card -->
+
+                                    <div class="card">
+                                        <div class="card-header" id="heading-2">
+                                            <h2 class="card-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+                                                    Check payments
+                                                </a>
+                                            </h2>
+                                        </div><!-- End .card-header -->
+                                        <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordion-payment">
+                                            <div class="card-body">
+                                                Ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. 
+                                            </div><!-- End .card-body -->
+                                        </div><!-- End .collapse -->
+                                    </div><!-- End .card -->
+
+                                    <div class="card">
+                                        <div class="card-header" id="heading-3" >
+                                            <h2 class="card-title">
+                                                <a class="collapsed" role="button" id="cashondelivery" data-toggle="collapse" href="#collapse-3" aria-expanded="false" aria-controls="collapse-3" data-value="Cash on Delivery">
+                                                    Cash on Delivery
+                                                </a>
+                                                
+                                            </h2>
+                                        </div><!-- End .card-header -->
+                                        <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordion-payment">
+                                            <div class="card-body">Pay for your order in cash when it arrives at your doorstep. Enjoy the convenience and peace of mind! 
+                                            </div><!-- End .card-body -->
+                                        </div><!-- End .collapse -->
+                                    </div><!-- End .card -->
+
+                                    <div class="card">
+                                        <div class="card-header" id="heading-4">
+                                            <h2 class="card-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
+                                                    PayPal <small class="float-right paypal-link">What is PayPal?</small>
+                                                </a>
+                                            </h2>
+                                        </div><!-- End .card-header -->
+                                        <div id="collapse-4" class="collapse" aria-labelledby="heading-4" data-parent="#accordion-payment">
+                                            <div class="card-body">
+                                                Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.
+                                            </div><!-- End .card-body -->
+                                        </div><!-- End .collapse -->
+                                    </div><!-- End .card -->
+
+                                    <div class="card">
+                                        <div class="card-header" id="heading-5">
+                                            <h2 class="card-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
+                                                    Credit Card (Stripe)
+                                                    <img src="{% static 'assets/images/payments-summary.png' %}" alt="payments cards">
+                                                </a>
+                                            </h2>
+                                        </div><!-- End .card-header -->
+                                        <div id="collapse-5" class="collapse" aria-labelledby="heading-5" data-parent="#accordion-payment">
+                                            <div class="card-body"> Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Lorem ipsum dolor sit ame.
+                                            </div><!-- End .card-body -->
+                                        </div><!-- End .collapse -->
+                                    </div><!-- End .card -->
+                                </div><!-- End .accordion -->
+
+                                <button class="btn btn-outline-primary-2 btn-order btn-block" onclick="checkout2()">
+                                    <span class="btn-html" >Place Order</span>
+                                    <span class="btn-hover-html">Proceed to Checkout</span>
+                                </button>
+                            </div><!-- End .summary -->
+                        </aside><!-- End .col-lg-3 -->
+                    </div><!-- End .row -->
+            </div><!-- End .container -->
+        </div><!-- End .checkout -->
+    </div><!-- End .page-content -->
+</main><!-- End .main -->
+<script>
+    function getCSRFToken() {
+    let cookieValue = null;
+    let name = 'csrftoken';
+    if (document.cookie && document.cookie !== '') {
+        let cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            let cookie = cookies[i].trim();
+            // Does this cookie string begin with the 'csrftoken' name?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+  function checkout2() {
+    let product_id = $("#product_id").val();
+    let user_id = $("#user_id").val();
+    let first_name = $("#first_name").val();
+    let last_name = $("#last_name").val();
+    let user_phone = $("#phone").val();
+    let user_email = $("#email").val();
+    let user_address = $("#address").val();
+    let user_alternate_phone = $("#aphone").val();
+    let user_landmark = $("#landmark").val();
+    let user_city = $("#city").val();
+    let user_state = $("#state").val();
+    let country_name = $("#country_name").val();
+    let user_postal_code = $("#pincode").val();
+    let order_notes = $("#order-notes").val();
+    let cashondelivery = $("#cashondelivery").data('value');
+    if(!first_name){
+        $("#fname").html("Please Enter your first name").css('color','#dc3545')
+        return;
+    }
+    else if(!last_name){
+        $('#lname').html('Please Enter your Last Name').css('color','#dc3545')
+        return;
+    }
+    else if(!country_name){
+       $("#coname").html('Please Enter your Country').css('color','#dc3545')
+        return;
+    }
+    else if(!user_address){
+      $("#street").html('Please Enter your Address').css('color','#dc3545')
+        return;
+    }
+    else if(!user_city){
+      $("#ucity").html('Please Enter your City').css('color','#dc3545')
+        return;
+    }
+    else if(!user_state){
+        $("#ustate").html('Please Enter your State').css('color','#dc3545')
+        return;
+    }
+    else if(!user_phone){
+       $("#uphone").html('Please Enter your Ph.No').css('color','#dc3545')
+        return;
+    }
+    else if(!user_postal_code){
+        $("#upincode").html('Please Enter your Pincode').css('color','#dc3545')
+        return;
+    }
+    else if(!user_alternate_phone){
+       $("#uaphone").html('Please Enter your Alternate Phone Number').css('color','#dc3545')
+        return;
+    }
+    else if(user_phone == user_alternate_phone){
+        $("#uaphone").html('Phone and alternate phone cannot be same').css('color','#dc3545')
+        return;
+    }
+    $.ajax({
+        type: 'POST',
+        url: '/order_cart/',
+        headers: { 'X-CSRFToken': getCSRFToken() },  // Include the CSRF token here
+        data: {
+            "product_id": product_id,
+            "user_id": user_id,
+            "first_name": first_name,
+            "last_name": last_name,
+            "user_phone": user_phone,
+            "user_email": user_email,
+            "user_address": user_address,
+            "user_alternate_phone": user_alternate_phone,
+            "user_landmark": user_landmark,
+            "user_city": user_city,
+            "user_state": user_state,
+            "user_postal_code": user_postal_code,
+            "country_name": country_name,
+            "order_notes": order_notes,
+            "cashondelivery": cashondelivery,
+        },
+        success: function (data) {
+            if (data["status"] === "pass") {
+                alert("Order placed successfully!");
+                // window.location.href = '/orderPlaced/'
+                // window.location.href = '/view_orders/'+encodeURIComponent(data['currentUserId'])
+            } else {
+                alert("Order placement failed: " + data.error);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log("Error: " + error);
+            alert("An error occurred while processing your request.");
+        }
+    });
+}
+
+</script>
+{% endblock navbar %}
