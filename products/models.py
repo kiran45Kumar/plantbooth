@@ -38,7 +38,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, default="", on_delete=models.CASCADE)
     sub_category = models.ForeignKey(Subcategory, default="", on_delete=models.CASCADE,blank=True,null=True)
     subsub_category = models.ForeignKey(AnotherSubcategory, default="", on_delete=models.CASCADE,blank=True,null=True)
-    product_barcode = models.IntegerField()
+    product_barcode = models.CharField(max_length=15)
     product_quantity = models.IntegerField()
     product_image = models.ImageField(upload_to="products/",default="")
     product_benefits = models.TextField(max_length=1000,default="")  # New field for benefits
@@ -59,14 +59,22 @@ class DeliveryLocation(models.Model):
     def __str__(self):
         return f"{self.region} ({self.pincode})"
 class Cart(models.Model):
-    cid = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.CharField(max_length=200, default=1)
-    created_at = models.DateTimeField(auto_now_add= True)
-    updated_at = models.DateTimeField(auto_now=True)
-    
-    def __str__(self) -> str:
-        return self.product.product_name
+    cid = models.ForeignKey(Customer, on_delete=models.CASCADE)  # Links to the customer
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)  # Links to the product
+    quantity = models.PositiveIntegerField(default=1)  # Ensures quantity is a positive number
+    created_at = models.DateTimeField(auto_now_add=True)  # Timestamp when the item is added to the cart
+    updated_at = models.DateTimeField(auto_now=True)  # Timestamp for updates to the cart
+
+    def __str__(self):
+        return f"{self.product.product_name} (x{self.quantity})"
+
+    @property
+    def item_total(self):
+        """
+        Calculates the total price for this cart item.
+        """
+        return self.product.product_price * self.quantity
+
 class Orders(models.Model):
     CHOICES = [
         ('PENDING','PENDING'),

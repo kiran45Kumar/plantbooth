@@ -18,7 +18,7 @@ def userdashboard(request):
     ).distinct()
     return render(request, 'user/dashboard.html',{'customers':customer,'currentUser':request.session['user_name'],'currentUserId':request.session['user_id'],'count':cartcount,"addresses":addresses})
 def index(request):
-    user_id = request.session['user_id']
+    user_id = request.session.get('user_id',None)
     # delivery = DeliveryLocation.objects.filter(user_id=user_id)
     products = Product.objects.all()
     cartcount = Cart.objects.filter(cid = user_id).count()

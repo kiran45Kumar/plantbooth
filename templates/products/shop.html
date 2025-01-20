@@ -22,8 +22,6 @@
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-    <body>
 		<div id="success-message">Product Added to cart Successfully</div>
         <main class="main">
         	<div class="page-header text-center" style="background-image: url('{% static "assets/images/page-header-bg.jpg" %}')">
@@ -97,7 +95,7 @@
                                                 <div class="product-cat">
                                                     <a href="#">{{product.category}}</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="/product">{{product.product_name}}</a></h3><!-- End .product-title -->
+                                                <h3 class="product-title"><a href="/product/{{product.product_id}}">{{product.product_name}}</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
                                                     &#8377; {{product.product_price}}
                                                 </div><!-- End .product-price -->
@@ -245,7 +243,6 @@
                 	</div><!-- End .row -->
                 </div><!-- End .container -->
             </div><!-- End .page-content -->
-    </body>
 	<script>
 		 $(document).on('click', '#addToCart', function() {
     var product_id = $(this).data('product-id');

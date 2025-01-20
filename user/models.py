@@ -11,7 +11,7 @@ class Customer(models.Model):
     user_name = models.CharField(max_length = 50,default='')
     user_email = models.CharField(max_length = 50,unique=True)
     user_password = models.CharField(max_length = 50, default='')
-    user_phone = models.IntegerField()
+    user_phone = models.CharField(max_length=10)
     role = models.CharField(max_length = 50, choices = role_choices,default='customer')
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
